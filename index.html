@@ -470,7 +470,7 @@
         <div class="stat-label">세부 역량 진단</div>
       </div>
       <div class="stat-item" data-animate>
-        <div class="stat-num" data-count="6"><span>6</span>개 전공</div>
+        <div class="stat-num" data-count="19"><span>19</span>개 전공</div>
         <div class="stat-label">맞춤 루브릭 적용</div>
       </div>
       <div class="stat-item" data-animate>
@@ -778,12 +778,34 @@
             <label>목표 전공 <span class="req">*</span></label>
             <select name="major" required>
               <option value="">선택하세요</option>
-              <option value="CS">컴퓨터공학</option>
-              <option value="EE">전자/전기공학</option>
-              <option value="ME">기계공학</option>
-              <option value="BIO">생명과학</option>
-              <option value="BIZ">경영/경제</option>
-              <option value="MATH">수학/통계</option>
+              <optgroup label="공학">
+                <option value="CS">컴퓨터공학</option>
+                <option value="EE">전자/전기공학</option>
+                <option value="ME">기계공학</option>
+                <option value="IE">산업공학</option>
+                <option value="ARCH">건축/건설</option>
+                <option value="MSE">재료/화공·에너지</option>
+              </optgroup>
+              <optgroup label="자연">
+                <option value="MATH">수학/통계</option>
+                <option value="PHYS">물리</option>
+                <option value="CHEM">화학</option>
+                <option value="BIO">생명과학</option>
+                <option value="ESS">천문·지구과학</option>
+              </optgroup>
+              <optgroup label="의약·보건">
+                <option value="MED">의예/치의예</option>
+                <option value="PHARM">약학</option>
+                <option value="NURS">간호/보건</option>
+              </optgroup>
+              <optgroup label="인문·사회·교육">
+                <option value="BIZ">경영/경제</option>
+                <option value="PSY">심리</option>
+                <option value="SOCSCI">정치외교·행정·사회</option>
+                <option value="HUM">어문·철학</option>
+                <option value="EDU">교육</option>
+              </optgroup>
+              <option value="OTHER">기타 (목록에 없는 전공)</option>
             </select>
           </div>
           <div class="field">
@@ -869,7 +891,7 @@
         <button class="faq-q" onclick="toggleFaq(this)">
           어떤 전공까지 진단 가능한가요? <span class="arrow">↓</span>
         </button>
-        <div class="faq-a">현재 컴퓨터공학·전자전기·기계공학·생명과학·경영경제·수학통계 6개 전공을 지원합니다. 각 전공별로 5개 대학 평가 기준에 맞는 루브릭과 세특 예시를 보유하고 있어요. 다른 전공은 추후 추가 예정입니다.</div>
+        <div class="faq-a">현재 <b>공학·자연·의약·인문·사회 계열 19개 전공</b>을 지원합니다 — 컴퓨터·전자전기·기계·산업·건축·재료/화공(공학), 수학통계·물리·화학·생명·천문지구(자연), 의예·약학·간호(의약), 경영경제·심리·정치외교/행정·어문/철학·교육(인문·사회). 각 전공별로 주요 대학 공동연구 평가 기준에 맞춘 루브릭과 세특 예시를 보유하고 있어요. 목록에 없는 전공도 9개 역량 공통 기준으로 진단 가능합니다.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
