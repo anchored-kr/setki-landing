@@ -623,6 +623,49 @@
         </div>
       </div>
     </div>
+
+    <!-- 실제 전체 샘플 리포트 (PDF) -->
+    <style>
+      .sample-real { margin-top:36px; padding-top:30px; border-top:1px dashed var(--border); }
+      .sample-real .sr-head { font-weight:800; font-size:1.05rem; margin-bottom:4px; }
+      .sample-real .sr-sub { font-size:0.85rem; color:var(--muted); margin-bottom:20px; line-height:1.6; }
+      .sr-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; }
+      .sr-thumb { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden;
+                  box-shadow:0 6px 22px rgba(15,23,42,.10); transition:transform .15s, box-shadow .15s; background:#fff; }
+      .sr-thumb:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(37,99,235,.18); }
+      .sr-thumb img { width:100%; display:block; }
+      .sr-thumb .cap { font-size:0.7rem; color:var(--muted); text-align:center; padding:7px 4px; border-top:1px solid var(--border); }
+      @media (max-width:680px){ .sr-grid { grid-template-columns:repeat(2,1fr); } }
+    </style>
+    <div class="sample-real">
+      <div class="sr-head">📄 그래서, 실제 리포트는 이렇게 생겼어요</div>
+      <div class="sr-sub">전자/전기공학 지망 학생의 <strong>실제 진단 리포트(A4 15쪽)</strong> 샘플이에요. 이미지를 누르면 전체 PDF가 열립니다.</div>
+      <div class="sr-grid">
+        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
+          <img src="/sample/page-01.png" alt="샘플 1쪽 — 한 줄 진단·종합 진단" loading="lazy">
+          <div class="cap">1쪽 · 한 줄 진단 & 종합 진단</div>
+        </a>
+        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
+          <img src="/sample/page-03.png" alt="샘플 3쪽 — 9개 역량 현황표" loading="lazy">
+          <div class="cap">3쪽 · 9개 역량 현황표</div>
+        </a>
+        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
+          <img src="/sample/page-05.png" alt="샘플 5쪽 — 우수 세특 비교" loading="lazy">
+          <div class="cap">5쪽 · 우수 세특 vs 우리 아이</div>
+        </a>
+        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
+          <img src="/sample/page-07.png" alt="샘플 7쪽 — 다음 한 수" loading="lazy">
+          <div class="cap">7쪽 · 다음 한 수(실행 전략)</div>
+        </a>
+      </div>
+      <div style="text-align:center">
+        <a href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">
+          전체 샘플 PDF 열기 (15쪽) →
+        </a>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:10px">※ 가상 학생 기준 샘플 · 실제 개인정보 미포함</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
