@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세트키 — 세특의 치트키 | setki.me</title>
+  <meta name="description" content="우리 아이 학생부, 전공 기준으로 점검해드려요. 5개 대학 공동연구 평가 기준으로 세특 갭을 진단하고, 다음 학기 탐구 방향을 PDF로 알려드립니다.">
+  <meta name="keywords" content="세특, 학생부, 세특 진단, 학생부종합전형, 학종, 세특 전략, 입시 컨설팅, 고1, 고2, 세트키">
+  <link rel="canonical" href="https://setki.me">
+
+  <!-- Open Graph (카카오톡, 네이버 블로그 공유 시 미리보기) -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://setki.me">
+  <meta property="og:title"       content="세트키 — 세특의 치트키">
+  <meta property="og:description" content="우리 아이 세특, 전공 기준으로 점검해본 적 있으세요? 48시간 내 PDF 리포트로 갭 진단 + 다음 한 수를 알려드립니다.">
+  <meta property="og:site_name"   content="세트키">
+  <meta property="og:locale"      content="ko_KR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="세트키 — 세특의 치트키">
+  <meta name="twitter:description" content="우리 아이 세특, 전공 기준으로 점검해본 적 있으세요? 48시간 내 PDF 리포트">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #2563eb; --blue-dark: #1d4ed8; --blue-light: #eff6ff;
+      --amber: #f59e0b; --amber-light: #fffbeb;
+      --red: #ef4444; --red-light: #fef2f2;
+      --green: #22c55e; --green-light: #f0fdf4;
+      --text: #0f172a; --sub: #334155; --muted: #64748b; --faint: #94a3b8;
+      --border: #e2e8f0; --bg: #f8fafc; --surface: #ffffff;
+      --radius: 14px; --radius-sm: 8px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans KR', -apple-system, 'Apple SD Gothic Neo', sans-serif;
+           color: var(--text); background: #fff; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    strong { font-weight: 700; }
+
+    /* ── 긴급 배너 (animation 섹션에서 정의) ── */
+    .top-bar { color: #fff; text-align: center; padding: 10px 16px;
+               font-size: 0.82rem; font-weight: 500; }
+    .top-bar b { color: #fbbf24; }
+
+    /* ── 네비 ── */
+    nav {
+      position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+      padding: 14px 40px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff; padding: 9px 20px; border-radius: 99px;
+               font-size: 0.85rem; font-weight: 700; transition: background .15s; }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* ── 공통 레이아웃 ── */
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* ── 히어로 ── */
+    .hero { padding: 64px 0 80px; background: #fff; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-light);
+                    color: var(--blue); font-size: 0.78rem; font-weight: 700; border-radius: 99px;
+                    padding: 5px 14px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; line-height: 1.25;
+               letter-spacing: -0.03em; margin-bottom: 18px; }
+    .hero h1 em { color: var(--blue); font-style: normal; }
+    .hero-sub { font-size: 1rem; color: var(--sub); line-height: 1.75; margin-bottom: 28px; }
+    .hero-sub b { color: var(--text); }
+    .hero-cta-group { display: flex; flex-direction: column; gap: 10px; }
+    .btn-primary { display: inline-flex; justify-content: center; align-items: center;
+                   background: var(--blue); color: #fff; font-weight: 800; font-size: 1rem;
+                   padding: 16px 32px; border-radius: 12px; transition: background .15s; width: fit-content; }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .hero-proof { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .hero-proof b { color: var(--text); }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+    /* 히어로 프리뷰 카드 */
+    .hero-preview { background: var(--surface); border: 1px solid var(--border);
+                    border-radius: var(--radius); overflow: hidden;
+                    box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+    .preview-header { background: var(--text); padding: 14px 18px;
+                      font-size: 0.78rem; color: #94a3b8; font-weight: 500; }
+    .preview-header b { color: #fff; }
+    .preview-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .mini-gap { border-left: 3px solid; border-radius: 7px; padding: 11px 13px;
+                font-size: 0.8rem; line-height: 1.6; }
+    .mini-gap.red    { background: #fef2f2; border-color: #ef4444; }
+    .mini-gap.yellow { background: #fffbeb; border-color: #f59e0b; }
+    .mini-gap.blue   { background: #eff6ff; border-color: #2563eb; }
+    .mini-gap-title { font-weight: 700; margin-bottom: 4px; font-size: 0.78rem; }
+    .mini-gap-body  { color: var(--sub); font-size: 0.76rem; }
+    .mini-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; border-radius: 99px;
+                padding: 1px 8px; margin-right: 4px; }
+    .tag-red    { background: #fee2e2; color: #991b1b; }
+    .tag-yellow { background: #fde68a; color: #78350f; }
+    .tag-blue   { background: #dbeafe; color: #1e40af; }
+
+    /* ── 통계 바 ── */
+    .stats-bar { background: var(--bg); border-top: 1px solid var(--border);
+                 border-bottom: 1px solid var(--border); padding: 28px 0; }
+    .stats-inner { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 1.8rem; font-weight: 900; color: var(--text); line-height: 1; }
+    .stat-num span { color: var(--blue); }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── 문제 인식 ── */
+    .problems-bg { background: #fff; }
+    .section-eyebrow { font-size: 0.75rem; font-weight: 700; color: var(--blue);
+                       text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900;
+                     letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 10px; }
+    .section-sub { font-size: 0.93rem; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
+
+    .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .problem-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+                    padding: 22px 22px 20px; }
+    .problem-card .emoji { font-size: 1.6rem; margin-bottom: 10px; }
+    .problem-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .problem-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── 미리보기 (탭) ── */
+    .preview-bg { background: var(--bg); }
+    .tabs { display: flex; gap: 4px; background: var(--border); border-radius: 10px;
+            padding: 4px; margin-bottom: 24px; width: fit-content; }
+    .tab { padding: 8px 18px; border-radius: 7px; font-size: 0.83rem; font-weight: 600;
+           cursor: pointer; color: var(--muted); transition: all .15s; border: none; background: transparent; }
+    .tab.active { background: #fff; color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* 갭카드 미리보기 */
+    .demo-gap { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .demo-gap-header { display: flex; justify-content: space-between; align-items: center;
+                       padding: 14px 18px; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
+    .demo-gap-title { font-weight: 800; font-size: 0.92rem; }
+    .badge-row { display: flex; gap: 6px; }
+    .badge { font-size: 0.72rem; font-weight: 700; border-radius: 99px; padding: 3px 10px; }
+    .b-red    { background: #fee2e2; color: #991b1b; }
+    .b-yellow { background: #fde68a; color: #78350f; }
+    .b-indigo { background: #e0e7ff; color: #3730a3; }
+    .b-blue   { background: #dbeafe; color: #1e40af; }
+    .b-green  { background: #dcfce7; color: #166534; }
+    .demo-gap-body { padding: 16px 18px; font-size: 0.85rem; line-height: 1.75; color: var(--sub); }
+    .demo-quote { border-left: 3px solid var(--border); padding: 6px 12px;
+                  font-style: italic; color: var(--muted); font-size: 0.8rem; margin: 10px 0; }
+
+    /* 탐구 가이드 미리보기 */
+    .demo-guide { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .demo-guide-header { background: #f0f9ff; padding: 12px 18px; border-bottom: 1px solid #bae6fd;
+                         font-size: 0.8rem; font-weight: 700; color: #0369a1; }
+    .demo-start { padding: 12px 18px; background: #f0f9ff; border-left: 3px solid #38bdf8;
+                  margin: 12px 18px; border-radius: 5px; font-size: 0.82rem; color: #0c4a6e; line-height: 1.6; }
+    .demo-steps { padding: 0 18px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .demo-step { display: grid; grid-template-columns: 90px 1fr; gap: 10px;
+                 background: var(--bg); border-radius: 8px; padding: 10px 12px;
+                 border: 1px solid var(--border); font-size: 0.81rem; }
+    .step-el { font-weight: 700; color: var(--blue); font-size: 0.75rem; padding-top: 1px; }
+    .step-detail { color: var(--sub); line-height: 1.55; }
+    .step-signal { color: var(--muted); font-size: 0.73rem; margin-top: 2px; }
+
+    /* 성장 예측 미리보기 */
+    .demo-growth { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .growth-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gc { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .gc-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; }
+    .gc-arrow { display: flex; align-items: center; gap: 8px; font-size: 0.83rem; font-weight: 600; margin-bottom: 8px; }
+    .lv-from { background: #f1f5f9; color: var(--muted); padding: 2px 10px; border-radius: 99px; }
+    .lv-to   { background: var(--green-light); color: #16a34a; padding: 2px 10px; border-radius: 99px; }
+    .gc-cond { font-size: 0.76rem; color: var(--muted); line-height: 1.55; }
+    .gc-conf { font-size: 0.72rem; font-weight: 700; }
+    .cf-high { color: #16a34a; } .cf-mid { color: var(--amber); }
+
+    /* ── 프로세스 ── */
+    .process-steps { display: flex; gap: 0; counter-reset: step; }
+    .ps { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+          padding: 0 20px; position: relative; }
+    .ps:not(:last-child)::after {
+      content: ''; position: absolute; top: 28px;
+      left: calc(50% + 28px);
+      right: calc(-50% + 28px);
+      height: 1px; background: var(--border); }
+    .ps-num { width: 56px; height: 56px; border-radius: 50%; background: var(--blue);
+              color: #fff; font-weight: 900; font-size: 1.2rem; display: flex;
+              align-items: center; justify-content: center; margin-bottom: 16px; flex-shrink: 0; }
+    .ps h3 { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+    .ps p  { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Why ── */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .why-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+    .why-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .why-card h3 { font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
+    .why-card p  { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── 가격 앵커 ── */
+    .pricing-wrap { background: var(--text); border-radius: 20px; padding: 48px 40px;
+                    color: #fff; text-align: center; }
+    .pricing-wrap h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900;
+                       letter-spacing: -0.02em; margin-bottom: 16px; }
+    .price-compare { display: flex; justify-content: center; align-items: center;
+                     gap: 24px; margin: 24px 0; flex-wrap: wrap; }
+    .price-item { text-align: center; }
+    .price-label { font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; }
+    .price-value { font-size: 1.6rem; font-weight: 900; }
+    .price-value.cross { color: #94a3b8; text-decoration: line-through; font-size: 1.2rem; }
+    .price-value.highlight { color: #fbbf24; font-size: 2rem; }
+    .price-arrow { color: #94a3b8; font-size: 1.4rem; }
+    .pricing-note { font-size: 0.82rem; color: #94a3b8; margin-top: 12px; }
+    .pricing-cta { display: inline-block; background: #fbbf24; color: var(--text); font-weight: 800;
+                   font-size: 1.05rem; padding: 16px 40px; border-radius: 12px; margin-top: 28px; }
+    .pricing-cta:hover { background: #f59e0b; }
+    .pricing-sub { font-size: 0.78rem; color: #64748b; margin-top: 10px; }
+
+    /* ── 신청 폼 ── */
+    .form-bg { background: var(--bg); }
+    .form-card { background: #fff; border: 1px solid var(--border); border-radius: 20px;
+                 padding: 40px; max-width: 680px; margin: 0 auto; }
+    .form-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+    .form-card .form-sub { font-size: 0.84rem; color: var(--muted); margin-bottom: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-full { grid-column: 1 / -1; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+    .field label .req { color: #ef4444; }
+    input, select, textarea {
+      border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 13px;
+      font-family: inherit; font-size: 0.88rem; color: var(--text);
+      transition: border-color .15s; width: 100%; background: #fff;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); }
+    textarea { resize: vertical; min-height: 200px; line-height: 1.65; }
+    .consent-box { display: flex; gap: 10px; background: var(--bg); border-radius: 8px;
+                   padding: 14px; align-items: flex-start; }
+    .consent-box input[type=checkbox] { flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px; }
+    .consent-box p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .submit-btn { width: 100%; background: var(--blue); color: #fff; border: none;
+                  font-family: inherit; font-size: 1rem; font-weight: 800;
+                  padding: 16px; border-radius: 10px; cursor: pointer; margin-top: 18px;
+                  transition: background .15s; }
+    .submit-btn:hover { background: var(--blue-dark); }
+    .submit-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+    #success { display: none; text-align: center; padding: 32px; }
+    #success .s-icon { font-size: 3rem; margin-bottom: 14px; }
+    #success h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    #success p  { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ── FAQ ── */
+    .faq-wrap { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; cursor: pointer;
+              font-family: inherit; font-size: 0.9rem; font-weight: 700; color: var(--text);
+              padding: 18px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-q .arrow { font-size: 1rem; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { font-size: 0.84rem; color: var(--muted); line-height: 1.75;
+              max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; }
+    .faq-a.open { max-height: 200px; padding-bottom: 18px; }
+
+    /* ── 푸터 ── */
+    footer { background: var(--text); color: #64748b; padding: 28px 40px;
+             text-align: center; font-size: 0.78rem; }
+    footer a { color: #94a3b8; }
+
+    /* ── 반응형 ── */
+    @media (max-width: 760px) {
+      nav { padding: 12px 20px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-preview { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .process-steps { flex-direction: column; gap: 24px; }
+      .ps::after { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .growth-cards { grid-template-columns: 1fr; }
+      .stats-inner { gap: 28px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .pricing-wrap { padding: 32px 24px; }
+      section { padding: 56px 0; }
+    }
+
+    /* ══════════════════════════════════
+       애니메이션 & 인터랙션
+    ══════════════════════════════════ */
+
+    /* 스크롤 진입 애니메이션 */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s cubic-bezier(.25,.46,.45,.94),
+                  transform .65s cubic-bezier(.25,.46,.45,.94);
+    }
+    [data-animate].visible { opacity: 1; transform: translateY(0); }
+    [data-animate][data-delay="1"] { transition-delay: .08s; }
+    [data-animate][data-delay="2"] { transition-delay: .16s; }
+    [data-animate][data-delay="3"] { transition-delay: .24s; }
+    [data-animate][data-delay="4"] { transition-delay: .32s; }
+    [data-animate][data-delay="5"] { transition-delay: .40s; }
+    [data-animate][data-delay="6"] { transition-delay: .48s; }
+
+    /* 히어로 텍스트 — CSS keyframe으로 JS 의존 없이 안정적으로 */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow  { animation: heroFadeUp .65s cubic-bezier(.25,.46,.45,.94) .05s both; }
+    .hero h1       { animation: heroFadeUp .65s cubic-bezier(.25,.46,.45,.94) .18s both; }
+    .hero-sub      { animation: heroFadeUp .65s cubic-bezier(.25,.46,.45,.94) .32s both; }
+    .hero-cta-group{ animation: heroFadeUp .65s cubic-bezier(.25,.46,.45,.94) .46s both; }
+
+    /* 히어로 미리보기 카드 float */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    .hero-preview { animation: float 4.5s ease-in-out infinite; }
+
+    /* 상단 배너 그라데이션 슬라이드 */
+    .top-bar {
+      background: linear-gradient(90deg, #0f172a 0%, #1e3a5f 40%, #1e40af 60%, #1e3a5f 80%, #0f172a 100%);
+      background-size: 300% 100%;
+      animation: bannerSlide 6s linear infinite;
+    }
+    @keyframes bannerSlide {
+      0%   { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* CTA 버튼 글로우 펄스 */
+    @keyframes ctaGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,.35); }
+      50%       { box-shadow: 0 0 0 10px rgba(37,99,235,0); }
+    }
+    .btn-primary { animation: ctaGlow 2.8s ease-in-out infinite; }
+
+    /* 카드 호버 lift */
+    .problem-card, .why-card {
+      transition: transform .22s cubic-bezier(.25,.46,.45,.94),
+                  box-shadow .22s cubic-bezier(.25,.46,.45,.94),
+                  border-color .22s;
+      will-change: transform;
+    }
+    .problem-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.09);
+      border-color: #c7d2fe;
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.09);
+      border-color: #bfdbfe;
+    }
+
+    /* 통계 숫자 카운트업 */
+    .stat-num { transition: color .3s; }
+    .stat-item.visible .stat-num { color: var(--blue); }
+
+    /* nav 스크롤 쉐도우 */
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+
+    /* 탭 콘텐츠 전환 */
+    .tab-content.active {
+      animation: tabReveal .3s cubic-bezier(.25,.46,.45,.94) both;
+    }
+    @keyframes tabReveal {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 프로세스 스텝 번호 스핀 */
+    .ps-num {
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s;
+    }
+    .ps:hover .ps-num {
+      transform: scale(1.15) rotate(-5deg);
+      background: var(--blue-dark);
+    }
+
+    /* 폼 인풋 포커스 효과 강화 */
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+
+    /* pricing wrap 입장 */
+    .pricing-wrap {
+      transition: transform .3s;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 긴급 배너 -->
+<div class="top-bar">🔑 세트키 오픈 이벤트 · 선착순 50명 무료 · <b>현재 12명</b> 신청 완료</div>
+
+<!-- 네비 -->
+<nav>
+  <div class="nav-logo">세트<span>키</span></div>
+  <a href="#form" class="nav-cta">무료 PDF 받기</a>
+</nav>
+
+<!-- 히어로 -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">📋 고1~2 학부모를 위한 서비스</div>
+        <h1>우리 아이 세특,<br><em>전공 기준으로</em><br>점검해 본 적 있으세요?</h1>
+        <p class="hero-sub">
+          5개 대학이 실제로 쓰는 <b>9개 평가 기준</b>으로 갭을 찾고,<br>
+          다음 학기 탐구 방향을 <b>PDF 리포트</b>로 보내드립니다.<br>
+          컨설팅 50만원이 알려주는 것, 48시간 안에 이메일로.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#form" class="btn-primary">무료로 PDF 리포트 받기 →</a>
+          <div class="hero-proof">
+            <span class="dot"></span>
+            <span>최근 7일 <b>12명</b> 신청 · 이메일로 <b>48시간 내</b> 발송 · 개인정보 즉시 삭제</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 미니 리포트 미리보기 -->
+      <div class="hero-preview">
+        <div class="preview-header">
+          <b>📊 진단 리포트 미리보기</b> · 컴퓨터공학 / 고2
+        </div>
+        <div class="preview-body">
+          <div class="mini-gap red">
+            <div class="mini-gap-title">
+              <span class="mini-tag tag-red">🔴 높음</span> 진로 탐색 연속성 (CARE-3)
+            </div>
+            <div class="mini-gap-body">1학년 정보 수업 버블 정렬 구현이 2학년 어디에도 이어지지 않음. exemplary는 학기 간 탐구가 연결·심화됨.</div>
+          </div>
+          <div class="mini-gap yellow">
+            <div class="mini-gap-title">
+              <span class="mini-tag tag-yellow">🟡 보통</span> 탐구력 (ACAD-3)
+            </div>
+            <div class="mini-gap-body">구현은 있으나 가설·측정·한계 인식·후속 탐구가 없음. "수행평가 우수"에서 멈춤.</div>
+          </div>
+          <div class="mini-gap blue">
+            <div class="mini-gap-title">
+              <span class="mini-tag tag-blue">💡 다음 한 수</span> 탐구 설계 가이드 포함
+            </div>
+            <div class="mini-gap-body">가설 설정 → 직접 구현·측정 → 한계 인식 → 후속 과제 설정 단계별 방법론과 성장 예측까지</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 통계 바 -->
+<div class="stats-bar">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat-item" data-animate>
+        <div class="stat-num" data-count="5"><span>5</span>개 대학</div>
+        <div class="stat-label">공동연구 평가 기준 적용</div>
+      </div>
+      <div class="stat-item" data-animate>
+        <div class="stat-num" data-count="9"><span>9</span>개 지표</div>
+        <div class="stat-label">세부 역량 진단</div>
+      </div>
+      <div class="stat-item" data-animate>
+        <div class="stat-num" data-count="6"><span>6</span>개 전공</div>
+        <div class="stat-label">맞춤 루브릭 적용</div>
+      </div>
+      <div class="stat-item" data-animate>
+        <div class="stat-num" data-count="48"><span>48</span>시간</div>
+        <div class="stat-label">이내 PDF 이메일 발송</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 문제 인식 -->
+<section class="problems-bg">
+  <div class="wrap">
+    <div class="section-eyebrow">이런 고민 있으신가요?</div>
+    <h2 class="section-title">학부모님들이 가장 많이 하는<br>고민 4가지</h2>
+    <div class="problem-grid">
+      <div class="problem-card" data-animate data-delay="1">
+        <div class="emoji">😰</div>
+        <h3>"세특에 뭘 채워야 하는지 모르겠어요"</h3>
+        <p>대학이 보는 기준이 뭔지, 우리 아이 세특에 무엇이 빠졌는지 알 수가 없어요. 선생님도 바쁘고, 아이도 모르고.</p>
+      </div>
+      <div class="problem-card" data-animate data-delay="2">
+        <div class="emoji">💸</div>
+        <h3>"컨설팅은 너무 비싸고, 받아도 '그래서 뭘?'이 남아요"</h3>
+        <p>회당 50만원 이상인 입시 컨설팅. 한 번 받고 나면 방향은 알겠는데, 구체적으로 뭘 어떻게 해야 하는지 여전히 막막해요.</p>
+      </div>
+      <div class="problem-card" data-animate data-delay="3">
+        <div class="emoji">📅</div>
+        <h3>"고2인데 아직 늦지 않았을까요?"</h3>
+        <p>고1~2가 세특 관리의 골든타임입니다. 2학기가 남아 있다면 지금 방향을 잡으면 충분히 달라질 수 있어요.</p>
+      </div>
+      <div class="problem-card" data-animate data-delay="4">
+        <div class="emoji">📊</div>
+        <h3>"내신은 괜찮은데 학종이 걱정이에요"</h3>
+        <p>2028 개편으로 내신이 5등급제가 되면 성적만으론 변별이 안 돼요. 세특·과목 선택·성취 추이가 더 중요해집니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 리포트 미리보기 -->
+<section class="preview-bg">
+  <div class="wrap">
+    <div class="section-eyebrow">리포트 미리보기</div>
+    <h2 class="section-title">이런 내용이 PDF로 옵니다</h2>
+    <p class="section-sub">합격 확률 같은 숫자가 아니라, <strong>구체적인 다음 행동</strong>을 알려드려요.</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'t1')">갭 진단</button>
+      <button class="tab" onclick="switchTab(this,'t2')">탐구 설계 가이드</button>
+      <button class="tab" onclick="switchTab(this,'t3')">성장 예측</button>
+    </div>
+
+    <!-- 갭 진단 탭 -->
+    <div class="tab-content active" id="t1">
+      <div class="demo-gap">
+        <div class="demo-gap-header">
+          <div class="demo-gap-title">GAP 1 — 진로 탐색 활동과 경험 (CARE-3)</div>
+          <div class="badge-row">
+            <span class="badge b-red">🔴 높음</span>
+            <span class="badge b-yellow">발전 중</span>
+          </div>
+        </div>
+        <div class="demo-gap-body">
+          <p style="margin-bottom:10px">1학년 2학기 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않고 있습니다. 진로활동은 <em>"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표"</em> 수준에 그쳐, 연속성이 보이지 않습니다.</p>
+          <p style="margin-bottom:10px"><strong>exemplary 사례와의 차이:</strong> 우수 사례는 전 학기의 탐구 결과에서 발견한 한계를 다음 학기 탐구의 출발점으로 이어받아 학기 간 연속성이 명확합니다. 이 학생은 구현 경험이 있는데도 활용되지 않고 있습니다.</p>
+          <div class="demo-quote">"소프트웨어 개발자를 꿈으로 설정하고 관련 직업의 전망에 대해 조사하여 발표하였다." <br>→ 1회성 조사·발표에 그침 (CARE-3 anti_flag)</div>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:8px">근거 루브릭: R-CS-CARE3-01, R-CS-CARE3-02</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 탐구 가이드 탭 -->
+    <div class="tab-content" id="t2">
+      <div class="demo-guide">
+        <div class="demo-guide-header">🔬 탐구 설계 가이드 — CARE-3 갭을 메우는 방법론</div>
+        <div class="demo-start">
+          <strong>출발점:</strong> 1학년 때 버블 정렬 구현에서 "역순 입력에서 유독 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.
+        </div>
+        <div class="demo-steps">
+          <div class="demo-step">
+            <div class="step-el">가설 설정</div>
+            <div>
+              <div class="step-detail">퀵 정렬의 성능이 피벗 선택 방식에 따라 달라질 것이라는 가설을 수식(점화식)으로 표현</div>
+              <div class="step-signal">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="step-el">직접 구현·측정</div>
+            <div>
+              <div class="step-detail">확률과통계 개념(조건부 확률)을 이용해 평균 케이스 분석 + 무작위/역순/정렬 입력으로 실행시간 측정</div>
+              <div class="step-signal">→ CARE-3: 학기 간 탐구 연결, 수학 개념 CS에 적용</div>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="step-el">한계 인식</div>
+            <div>
+              <div class="step-detail">입력 크기가 작을 때와 클 때 결과가 다를 수 있다는 한계를 명시</div>
+              <div class="step-signal">→ ACAD-3 proficient → advanced 도달 조건</div>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="step-el">후속 과제 설정</div>
+            <div>
+              <div class="step-detail">캐시 지역성이 실제 성능에 미치는 영향을 다음 탐구 주제로 스스로 설정</div>
+              <div class="step-signal">→ CARE-3: 연속적 탐구 서사 완성</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 성장 예측 탭 -->
+    <div class="tab-content" id="t3">
+      <div class="demo-growth">
+        <p style="font-size:0.83rem;color:var(--muted);margin-bottom:16px">위 탐구를 완수했을 때 예상되는 역량 변화입니다.</p>
+        <div class="growth-cards">
+          <div class="gc">
+            <div class="gc-title">진로 탐색 연속성<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">CARE-3</span></div>
+            <div class="gc-arrow">
+              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
+            </div>
+            <div class="gc-cond">1학년 탐구를 2학년 수학 과목과 연결하고, 세특에 반영됐을 때</div>
+            <div class="gc-conf cf-high" style="margin-top:6px">신뢰도 높음 ✓</div>
+          </div>
+          <div class="gc">
+            <div class="gc-title">탐구력<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">ACAD-3</span></div>
+            <div class="gc-arrow">
+              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
+            </div>
+            <div class="gc-cond">가설→구현→측정→한계인식의 전 과정을 세특에 담았을 때</div>
+            <div class="gc-conf cf-high" style="margin-top:6px">신뢰도 높음 ✓</div>
+          </div>
+          <div class="gc">
+            <div class="gc-title">전공 교과 이수<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">CARE-1</span></div>
+            <div class="gc-arrow">
+              <span class="lv-from">발전 중</span>→<span class="lv-from" style="color:var(--amber)">발전 중 유지</span>
+            </div>
+            <div class="gc-cond">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div>
+            <div class="gc-conf cf-mid" style="margin-top:6px">⚠ 아직 남는 갭</div>
+          </div>
+          <div class="gc">
+            <div class="gc-title">학업태도<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">ACAD-2</span></div>
+            <div class="gc-arrow">
+              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
+            </div>
+            <div class="gc-cond">수학 수업에서 CS 연결 의문을 교사와 공유하고 추가 탐색했을 때</div>
+            <div class="gc-conf cf-mid" style="margin-top:6px">신뢰도 보통</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 프로세스 -->
+<section style="background:#fff">
+  <div class="wrap">
+    <div class="section-eyebrow">어떻게 진행되나요?</div>
+    <h2 class="section-title" style="margin-bottom:48px">딱 3단계예요</h2>
+    <div class="process-steps">
+      <div class="ps" data-animate data-delay="1">
+        <div class="ps-num">1</div>
+        <h3>생기부 붙여넣기</h3>
+        <p>아래 폼에 학교생활기록부<br>내용을 붙여넣으세요.<br>세특·창체가 핵심이에요.</p>
+      </div>
+      <div class="ps" data-animate data-delay="2">
+        <div class="ps-num">2</div>
+        <h3>전문 분석</h3>
+        <p>5개 대학 공동연구 기준으로<br>전공 맞춤 갭을 진단하고<br>탐구 방향을 설계해요.</p>
+      </div>
+      <div class="ps" data-animate data-delay="3">
+        <div class="ps-num">3</div>
+        <h3>PDF 이메일 발송</h3>
+        <p>48시간 내에 갭 진단 +<br>탐구 가이드 + 성장 예측을<br>PDF로 보내드려요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="preview-bg">
+  <div class="wrap">
+    <div class="section-eyebrow">왜 세트키인가요?</div>
+    <h2 class="section-title">ChatGPT에 그냥 물어보는 것과<br>다른 점이 있어요</h2>
+    <div class="why-grid">
+      <div class="why-card" data-animate data-delay="1">
+        <div class="why-icon">📐</div>
+        <h3>5개 대학 공동연구 기준</h3>
+        <p>자체 기준이 아니라 건국대·경희대·연세대·중앙대·한국외대가 함께 만든 9개 평가 지표를 기반으로 진단해요. 대학 평가자가 실제로 보는 기준과 같아요.</p>
+      </div>
+      <div class="why-card" data-animate data-delay="2">
+        <div class="why-icon">📚</div>
+        <h3>우수·보통·약한 세특 비교</h3>
+        <p>입시 전문가가 큐레이션한 exemplary/solid/weak 세특 코퍼스와 대조해서 진단해요. "넌 solid, exemplary가 되려면 이게 빠졌어"라는 구체적 피드백이 나와요.</p>
+      </div>
+      <div class="why-card" data-animate data-delay="3">
+        <div class="why-icon">🔬</div>
+        <h3>탐구 설계 방법론</h3>
+        <p>"어떤 탐구를 해봐요"가 아니라 가설 설정 → 직접 구현 → 측정 → 한계 인식 → 후속 과제까지 단계별 방법론을 알려줘요. 학생이 실제로 실행할 수 있는 수준이에요.</p>
+      </div>
+      <div class="why-card" data-animate data-delay="4">
+        <div class="why-icon">📈</div>
+        <h3>성장 예측 포함</h3>
+        <p>이 탐구를 완수하면 어느 수준으로 올라가는지 예측해요. "이걸 하면 CARE-3가 developing에서 proficient로 올라갈 것 같다"는 구체적 예측이 있어야 다음 학기 계획을 세울 수 있어요.</p>
+      </div>
+      <div class="why-card" data-animate data-delay="5">
+        <div class="why-icon">🔒</div>
+        <h3>대필 없음 · 개인정보 즉시 삭제</h3>
+        <p>세특 문장을 대신 써주지 않아요. 방향과 방법론만 제시해요. 생기부는 분석 후 즉시 삭제되며, 제3자에게 제공하지 않아요.</p>
+      </div>
+      <div class="why-card" data-animate data-delay="6">
+        <div class="why-icon">⏰</div>
+        <h3>고2 2학기가 골든타임</h3>
+        <p>고3은 이미 늦어요. 고1~2에 방향을 잡아야 세특을 실제로 바꿀 수 있어요. 지금 점검하고 남은 학기를 제대로 쓰는 것이 가장 빠른 길이에요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 가격 앵커 -->
+<section style="padding:60px 0;background:#fff">
+  <div class="wrap">
+    <div class="pricing-wrap" data-animate>
+      <h2>컨설팅 50만원이 알려주는 것을<br>PDF 리포트로 48시간 안에</h2>
+      <div class="price-compare">
+        <div class="price-item">
+          <div class="price-label">오프라인 컨설팅</div>
+          <div class="price-value cross">50만원/회</div>
+        </div>
+        <div class="price-arrow">→</div>
+        <div class="price-item">
+          <div class="price-label">세트키 (선착순)</div>
+          <div class="price-value highlight">무료</div>
+        </div>
+      </div>
+      <p class="pricing-note">선착순 50명 무료 · 이후 소액 유료화 예정 · 기존 신청자는 혜택 유지</p>
+      <a href="#form" class="pricing-cta">지금 무료로 신청하기 →</a>
+      <div class="pricing-sub">48시간 내 PDF 이메일 발송 · 개인정보 즉시 삭제</div>
+    </div>
+  </div>
+</section>
+
+<!-- 신청 폼 -->
+<section class="form-bg" id="form">
+  <div class="wrap">
+    <div class="form-card" data-animate>
+      <h2>무료 진단 신청 📩</h2>
+      <p class="form-sub">선착순 50명 · 48시간 내 PDF 이메일 발송 · 개인정보는 발송 후 즉시 삭제됩니다</p>
+
+      <form id="submit-form" action="/submit" method="POST">
+        <div class="form-grid">
+          <div class="field">
+            <label>이메일 <span class="req">*</span></label>
+            <input type="email" name="email" required placeholder="report@example.com">
+          </div>
+          <div class="field">
+            <label>학생 이름 (선택)</label>
+            <input type="text" name="student_name" placeholder="익명 가능">
+          </div>
+          <div class="field">
+            <label>목표 전공 <span class="req">*</span></label>
+            <select name="major" required>
+              <option value="">선택하세요</option>
+              <option value="CS">컴퓨터공학</option>
+              <option value="EE">전자/전기공학</option>
+              <option value="ME">기계공학</option>
+              <option value="BIO">생명과학</option>
+              <option value="BIZ">경영/경제</option>
+              <option value="MATH">수학/통계</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>현재 학년 <span class="req">*</span></label>
+            <select name="grade" required>
+              <option value="">선택하세요</option>
+              <option value="1">고1</option>
+              <option value="2">고2</option>
+              <option value="3">고3</option>
+            </select>
+          </div>
+          <div class="field form-full">
+            <label>
+              학교생활기록부 내용 <span class="req">*</span>
+              <span style="font-weight:400;color:var(--faint)"> — 세특·창체가 핵심, 수상·독서는 빼셔도 됩니다</span>
+            </label>
+            <textarea name="transcript" required
+              placeholder="1학년 1학기부터 현재까지의 교과 세부능력 및 특기사항, 창의적 체험활동을 붙여넣어주세요.
+
+예시)
+[1학년 2학기]
+정보 (성취도 A): 파이썬 기초 문법 학습 후...
+
+[창의적 체험활동]
+진로활동: 컴퓨터공학에 관심이..."></textarea>
+          </div>
+          <div class="field form-full">
+            <label>추가 요청사항 (선택)</label>
+            <input type="text" name="extra" placeholder="특별히 점검해주셨으면 하는 부분이 있으면 알려주세요">
+          </div>
+          <div class="field form-full">
+            <div class="consent-box">
+              <input type="checkbox" id="consent" name="consent" required>
+              <p>입력하신 생기부 내용은 리포트 생성 목적으로만 사용되며, 발송 완료 후 즉시 삭제됩니다. 제3자에게 제공하지 않습니다. <span style="color:#ef4444">*</span></p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">📩 무료 진단 신청하기</button>
+      </form>
+
+      <div id="success">
+        <div class="s-icon">✅</div>
+        <h3>신청이 완료됐습니다!</h3>
+        <p>입력하신 이메일로 <strong>48시간 내</strong>에 PDF 리포트를 보내드릴게요.<br>
+           스팸함도 한 번 확인해 주세요.</p>
+        <p style="margin-top:12px;font-size:0.78rem;color:var(--muted)">문의: hello@setki.me</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#fff">
+  <div class="wrap">
+    <div class="section-eyebrow">자주 묻는 질문</div>
+    <h2 class="section-title" style="margin-bottom:32px">FAQ</h2>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          정말 완전 무료인가요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">네, 선착순 50명까지 완전 무료입니다. 검증 목적으로 운영하며, 이후 소액 유료화 예정이에요. 기존 무료 신청자에게는 별도 혜택을 드립니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          생기부 전체를 올려야 하나요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">교과 세부능력 및 특기사항(세특)과 창의적 체험활동 내용이 핵심입니다. 수상경력·독서활동은 2024 대입부터 미반영이라 없어도 됩니다. 성취도·원점수가 있으면 더 정확해요.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          개인정보는 어떻게 처리되나요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">입력하신 정보는 리포트 생성과 이메일 발송에만 사용됩니다. 발송 완료 후 즉시 삭제되며, 제3자에게 제공하지 않습니다. 학생 이름은 적지 않으셔도 됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          세특 문장을 대신 써주나요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">아닙니다. 세특은 학생 본인이 직접 탐구·활동한 결과여야 해요. 저희 리포트는 어떤 탐구를 어떻게 설계하면 좋은지 방향과 방법론을 알려드리고, 탐구 후 세특에 어떤 내용이 담겨야 하는지를 설명해요. 문장 작성은 절대 하지 않습니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          어떤 전공까지 진단 가능한가요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">현재 컴퓨터공학·전자전기·기계공학·생명과학·경영경제·수학통계 6개 전공을 지원합니다. 각 전공별로 5개 대학 평가 기준에 맞는 루브릭과 세특 예시를 보유하고 있어요. 다른 전공은 추후 추가 예정입니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          고3도 신청할 수 있나요? <span class="arrow">↓</span>
+        </button>
+        <div class="faq-a">물론 신청하실 수 있지만, 세특을 실제로 바꿀 수 있는 시간이 얼마 남지 않아 효과가 제한적일 수 있어요. 이 서비스는 고1~2 학부모님께 가장 큰 가치가 있습니다. 고3이시라면 자소서·면접 준비 방향으로 해석해드릴 수는 있어요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="color:#cbd5e1;font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;margin-bottom:6px">세트키 <span style="color:#60a5fa;font-size:0.78rem;font-weight:500">세특의 치트키</span></p>
+  <p>이 서비스는 교육 목적의 방향 제시 서비스입니다.</p>
+  <p style="margin-top:14px;line-height:1.9;color:#475569">
+    앵커드 주식회사 &nbsp;|&nbsp; 대표자 백인우<br>
+    사업자등록번호 751-86-02492<br>
+    경기도 성남시 분당구 대왕판교로 645번길 12 6층<br>
+    <a href="mailto:contact@anchored.kr" style="color:#94a3b8">contact@anchored.kr</a>
+  </p>
+  <p style="margin-top:12px;color:#334155">© 2026 앵커드 주식회사. All rights reserved.</p>
+</footer>
+
+<script>
+// 탭 전환
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// FAQ 토글
+function toggleFaq(btn) {
+  const ans = btn.nextElementSibling;
+  const isOpen = ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { ans.classList.add('open'); btn.classList.add('open'); }
+}
+
+// 폼 제출
+document.getElementById('submit-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '제출 중...';
+  try {
+    const resp = await fetch('https://formsubmit.co/ajax/hello@setki.me', { method: 'POST', body: new FormData(this) });
+    if (resp.ok) {
+      this.style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+    } else {
+      alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      btn.disabled = false; btn.textContent = '📩 무료 진단 신청하기';
+    }
+  } catch {
+    alert('네트워크 오류입니다. 다시 시도해주세요.');
+    btn.disabled = false; btn.textContent = '📩 무료 진단 신청하기';
+  }
+});
+
+/* ══════════════════════════════════
+   애니메이션 & 인터랙션 JS
+══════════════════════════════════ */
+
+// ① 히어로 텍스트 — CSS keyframe 처리로 변경됨 (JS 불필요)
+
+// ② Intersection Observer — 스크롤 진입 애니메이션
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    // 통계 카운트업
+    const numEl = entry.target.querySelector('[data-count]');
+    if (numEl) animateCount(numEl);
+    io.unobserve(entry.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+// ③ 통계 숫자 카운트업
+function animateCount(el) {
+  const target = parseInt(el.dataset.count, 10);
+  const suffix = el.textContent.replace(/\d+/, '').trim(); // "개 대학" 같은 단위
+  const span = el.querySelector('span');
+  let current = 0;
+  const duration = 900;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    if (span) span.textContent = Math.floor(current);
+    if (current >= target) clearInterval(timer);
+  }, 16);
+}
+
+// ④ 네비 스크롤 쉐도우
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+// ⑤ 탭 전환 (애니메이션 포함)
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => {
+    t.classList.remove('active');
+    t.style.display = 'none';
+  });
+  btn.classList.add('active');
+  const target = document.getElementById(id);
+  target.style.display = 'block';
+  // 다음 프레임에 active 추가해야 animation 발동
+  requestAnimationFrame(() => target.classList.add('active'));
+}
+
+// ⑥ 마우스 패럴랙스 — 히어로 프리뷰 카드
+const previewCard = document.querySelector('.hero-preview');
+if (previewCard) {
+  document.querySelector('.hero-inner')?.addEventListener('mousemove', (e) => {
+    const rect = previewCard.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / 28;
+    const dy = (e.clientY - cy) / 28;
+    previewCard.style.transform = `translateY(var(--float-y, 0px)) rotateY(${dx * .6}deg) rotateX(${-dy * .6}deg)`;
+  });
+  document.querySelector('.hero-inner')?.addEventListener('mouseleave', () => {
+    previewCard.style.transform = '';
+  });
+}
+
+// ⑦ 버튼 리플 효과
+document.querySelectorAll('.btn-primary, .nav-cta, .pricing-cta').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%; background:rgba(255,255,255,.35);
+      width:${size}px; height:${size}px;
+      left:${e.clientX - rect.left - size/2}px;
+      top:${e.clientY - rect.top - size/2}px;
+      transform:scale(0); animation:ripple .5s ease-out forwards; pointer-events:none;
+    `;
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 550);
+  });
+});
+
+// 리플 키프레임 동적 추가
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = '@keyframes ripple { to { transform:scale(2.5); opacity:0; } }';
+document.head.appendChild(rippleStyle);
+</script>
+</body>
+</html>
