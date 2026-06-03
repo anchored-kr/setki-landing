@@ -289,14 +289,16 @@
     .neis-link:hover { background: #075985; }
 
 
-    /* JS 실패 시 data-animate 요소 폴백 — 500ms 후 무조건 보임 */
+    /* data-animate 폴백 + pointer-events 항상 허용 */
     @keyframes fallbackShow {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     [data-animate]:not(.visible) {
-      animation: fallbackShow .6s ease .8s both;
+      animation: fallbackShow .5s ease 0.3s both;
     }
+    /* opacity:0 이어도 클릭은 항상 허용 */
+    [data-animate] { pointer-events: auto !important; }
 
 
     /* ── 상품 선택 ── */
@@ -790,7 +792,7 @@
 <!-- 가격 앵커 -->
 <section style="padding:60px 0;background:#fff">
   <div class="wrap">
-    <div class="pricing-wrap" data-animate>
+    <div class="pricing-wrap">
       <h2>컨설팅 50만원이 한 번에 말해주는 것을<br>학기마다, 단계별로</h2>
 
       <div style="display:flex;flex-direction:column;gap:12px;margin:28px 0;max-width:540px;margin-left:auto;margin-right:auto;">
@@ -837,7 +839,7 @@
 <!-- 신청 폼 -->
 <section class="form-bg" id="form">
   <div class="wrap">
-    <div class="form-card" data-animate>
+    <div class="form-card">
       <h2>전공 진단 신청 📩</h2>
       <p class="form-sub">기본 4,900원부터 · 48시간 내 PDF 이메일 발송 · 개인정보는 발송 후 즉시 삭제됩니다</p>
 
@@ -932,7 +934,7 @@
           <div class="field form-full">
             <!-- NEIS+ 가이드 -->
             <div class="neis-tip">
-              <div class="neis-tip-header" onclick="toggleNeis()">
+              <div class="neis-tip-header" onclick="toggleNeis()" style="cursor:pointer;user-select:none;">
                 <div class="neis-tip-title">📋 나이스플러스에서 생기부를 바로 가져올 수 있어요</div>
                 <span class="neis-tip-toggle" id="neis-toggle">펼치기 ↓</span>
               </div>
