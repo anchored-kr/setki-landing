@@ -221,6 +221,73 @@
     .pricing-cta:hover { background: #f59e0b; }
     .pricing-sub { font-size: 0.78rem; color: #64748b; margin-top: 10px; }
 
+    /* ── PDF 페이지 썸네일 + 라이트박스 ── */
+    .pages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+    .page-thumb {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; cursor: zoom-in; transition: transform .2s, box-shadow .2s;
+      aspect-ratio: 210/297; display: flex; flex-direction: column;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .page-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+    .page-num { background: var(--text); color: #94a3b8; font-size: 0.62rem;
+                font-weight: 700; padding: 5px 10px; letter-spacing: .04em; }
+    .page-content { padding: 8px; flex: 1; overflow: hidden; position: relative; }
+    .page-title-bar { font-size: 0.55rem; font-weight: 800; color: var(--text);
+                      border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-bottom: 5px;
+                      text-transform: uppercase; letter-spacing: .04em; }
+    .page-mini-card { border-left: 2px solid; border-radius: 3px; padding: 4px 5px;
+                      margin-bottom: 4px; font-size: 0.5rem; line-height: 1.4; }
+    .page-mini-card.r { background:#fef2f2; border-color:#ef4444; }
+    .page-mini-card.y { background:#fffbeb; border-color:#f59e0b; }
+    .page-mini-card.b { background:#eff6ff; border-color:#2563eb; }
+    .page-mini-card.g { background:#f0fdf4; border-color:#16a34a; }
+    .page-mini-card-title { font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .page-mini-card-body  { color: var(--muted); }
+    .page-mini-step { display: flex; gap: 3px; margin-bottom: 3px; }
+    .page-mini-step-el { font-weight: 700; color: var(--blue); font-size: 0.48rem;
+                         flex-shrink: 0; width: 36px; }
+    .page-mini-step-tx { font-size: 0.48rem; color: var(--sub); line-height: 1.4; }
+    .page-zoom-hint { position: absolute; bottom: 4px; right: 5px;
+                      font-size: 0.48rem; color: var(--faint); }
+
+    /* 라이트박스 */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000;
+                background: rgba(0,0,0,.75); backdrop-filter: blur(4px);
+                align-items: center; justify-content: center; cursor: zoom-out; padding: 20px; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { background: #fff; border-radius: 14px; overflow: hidden;
+                      max-width: 480px; width: 100%; max-height: 90vh;
+                      overflow-y: auto; box-shadow: 0 24px 80px rgba(0,0,0,.3); }
+    .lightbox-header { background: var(--text); color: #94a3b8; padding: 12px 16px;
+                       font-size: 0.8rem; font-weight: 700; display: flex;
+                       justify-content: space-between; align-items: center; position: sticky; top: 0; }
+    .lightbox-close { color: #fff; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+    .lightbox-body { padding: 18px; font-size: 0.82rem; }
+
+    /* NEIS+ 가이드 */
+    .neis-tip { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px;
+                padding: 14px 16px; margin-bottom: 12px; }
+    .neis-tip-header { display: flex; align-items: center; justify-content: space-between;
+                       cursor: pointer; }
+    .neis-tip-title { font-size: 0.83rem; font-weight: 700; color: #0369a1;
+                      display: flex; align-items: center; gap: 6px; }
+    .neis-tip-toggle { font-size: 0.75rem; color: #0369a1; font-weight: 600; }
+    .neis-tip-body { display: none; margin-top: 12px; }
+    .neis-tip-body.open { display: block; }
+    .neis-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+    .neis-step { background: #fff; border: 1px solid #bae6fd; border-radius: 7px;
+                 padding: 8px; text-align: center; font-size: 0.72rem; }
+    .neis-step-num { width: 20px; height: 20px; background: #0369a1; color: #fff;
+                     border-radius: 50%; font-weight: 800; font-size: 0.65rem;
+                     display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; }
+    .neis-step-title { font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .neis-step-desc  { color: var(--muted); font-size: 0.65rem; line-height: 1.4; }
+    .neis-link { display: inline-flex; align-items: center; gap: 5px; background: #0369a1;
+                 color: #fff; font-size: 0.78rem; font-weight: 700; padding: 8px 16px;
+                 border-radius: 7px; text-decoration: none; transition: background .15s; }
+    .neis-link:hover { background: #075985; }
+
     /* ── 신청 폼 ── */
     .form-bg { background: var(--bg); }
     .form-card { background: #fff; border: 1px solid var(--border); border-radius: 20px;
@@ -514,160 +581,104 @@
 <!-- 리포트 미리보기 -->
 <section class="preview-bg">
   <div class="wrap">
-    <div class="section-eyebrow">리포트 미리보기</div>
-    <h2 class="section-title">이런 내용이 PDF로 옵니다</h2>
-    <p class="section-sub">합격 확률 같은 숫자가 아니라, <strong>구체적인 다음 행동</strong>을 알려드려요.</p>
+    <div class="section-eyebrow">그래서, 실제 리포트는 이렇게 생겼어요</div>
+    <h2 class="section-title">클릭하면 크게 볼 수 있어요</h2>
+    <p class="section-sub">합격 확률 숫자가 아니라, <strong>구체적인 다음 행동</strong>을 알려드립니다.</p>
 
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab(this,'t1')">갭 진단</button>
-      <button class="tab" onclick="switchTab(this,'t2')">탐구 설계 가이드</button>
-      <button class="tab" onclick="switchTab(this,'t3')">성장 예측</button>
-    </div>
+    <div class="pages-grid">
 
-    <!-- 갭 진단 탭 -->
-    <div class="tab-content active" id="t1">
-      <div class="demo-gap">
-        <div class="demo-gap-header">
-          <div class="demo-gap-title">GAP 1 — 진로 탐색 활동과 경험 (CARE-3)</div>
-          <div class="badge-row">
-            <span class="badge b-red">🔴 높음</span>
-            <span class="badge b-yellow">발전 중</span>
+      <!-- Page 1: 프로필 요약 -->
+      <div class="page-thumb" onclick="openLightbox('lb1')">
+        <div class="page-num">PAGE 1 · 진단 프로필</div>
+        <div class="page-content">
+          <div class="page-title-bar">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div>
+          <div class="page-mini-card r" style="margin-bottom:6px">
+            <div class="page-mini-card-title">📊 한 줄 진단</div>
+            <div class="page-mini-card-body">구현 경험은 있으나 '왜·얼마나·다음엔' 이 세 가지가 빠진 학생부</div>
           </div>
-        </div>
-        <div class="demo-gap-body">
-          <p style="margin-bottom:10px">1학년 2학기 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않고 있습니다. 진로활동은 <em>"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표"</em> 수준에 그쳐, 연속성이 보이지 않습니다.</p>
-          <p style="margin-bottom:10px"><strong>exemplary 사례와의 차이:</strong> 우수 사례는 전 학기의 탐구 결과에서 발견한 한계를 다음 학기 탐구의 출발점으로 이어받아 학기 간 연속성이 명확합니다. 이 학생은 구현 경험이 있는데도 활용되지 않고 있습니다.</p>
-          <div class="demo-quote">"소프트웨어 개발자를 꿈으로 설정하고 관련 직업의 전망에 대해 조사하여 발표하였다." <br>→ 1회성 조사·발표에 그침 (CARE-3 anti_flag)</div>
-          <p style="font-size:0.75rem;color:var(--muted);margin-top:8px">근거 루브릭: R-CS-CARE3-01, R-CS-CARE3-02</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:4px">
+            <div class="page-mini-card b"><div class="page-mini-card-title">CARE-3</div><div class="page-mini-card-body">발전 중</div></div>
+            <div class="page-mini-card r"><div class="page-mini-card-title">ACAD-3</div><div class="page-mini-card-body">발전 중</div></div>
+            <div class="page-mini-card r"><div class="page-mini-card-title">CARE-1</div><div class="page-mini-card-body">발전 중</div></div>
+            <div class="page-mini-card y"><div class="page-mini-card-title">ACAD-2</div><div class="page-mini-card-body">발전 중</div></div>
+          </div>
+          <div class="page-zoom-hint">🔍 클릭해서 확대</div>
         </div>
       </div>
-    </div>
 
-    <!-- 탐구 가이드 탭 -->
-    <div class="tab-content" id="t2">
-      <div class="demo-guide">
-        <div class="demo-guide-header">🔬 탐구 설계 가이드 — CARE-3 갭을 메우는 방법론</div>
-        <div class="demo-start">
-          <strong>출발점:</strong> 1학년 때 버블 정렬 구현에서 "역순 입력에서 유독 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.
-        </div>
-        <div class="demo-steps">
-          <div class="demo-step">
-            <div class="step-el">가설 설정</div>
-            <div>
-              <div class="step-detail">퀵 정렬의 성능이 피벗 선택 방식에 따라 달라질 것이라는 가설을 수식(점화식)으로 표현</div>
-              <div class="step-signal">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div>
-            </div>
+      <!-- Page 2: 갭 진단 -->
+      <div class="page-thumb" onclick="openLightbox('lb2')">
+        <div class="page-num">PAGE 2 · 갭 진단</div>
+        <div class="page-content">
+          <div class="page-title-bar">갭 진단 — 무엇이 비어있나</div>
+          <div class="page-mini-card r">
+            <div class="page-mini-card-title">🔴 GAP 1 · 진로 탐색 연속성</div>
+            <div class="page-mini-card-body">1학년 정보 구현이 2학년 어디에도 연결되지 않음. exemplary는 학기 간 탐구가 이어짐.</div>
           </div>
-          <div class="demo-step">
-            <div class="step-el">직접 구현·측정</div>
-            <div>
-              <div class="step-detail">확률과통계 개념(조건부 확률)을 이용해 평균 케이스 분석 + 무작위/역순/정렬 입력으로 실행시간 측정</div>
-              <div class="step-signal">→ CARE-3: 학기 간 탐구 연결, 수학 개념 CS에 적용</div>
-            </div>
+          <div class="page-mini-card r" style="margin-top:4px">
+            <div class="page-mini-card-title">🔴 GAP 2 · 전공 교과 이수</div>
+            <div class="page-mini-card-body">인공지능기초 미이수(학교 미개설). 물리학Ⅰ 미이수(이수 선택 안 함).</div>
           </div>
-          <div class="demo-step">
-            <div class="step-el">한계 인식</div>
-            <div>
-              <div class="step-detail">입력 크기가 작을 때와 클 때 결과가 다를 수 있다는 한계를 명시</div>
-              <div class="step-signal">→ ACAD-3 proficient → advanced 도달 조건</div>
-            </div>
+          <div class="page-mini-card y" style="margin-top:4px">
+            <div class="page-mini-card-title">🟡 GAP 3 · 탐구력 깊이</div>
+            <div class="page-mini-card-body">구현은 있으나 가설·측정·한계인식·후속 없음. "수행평가 우수"에서 멈춤.</div>
           </div>
-          <div class="demo-step">
-            <div class="step-el">후속 과제 설정</div>
-            <div>
-              <div class="step-detail">캐시 지역성이 실제 성능에 미치는 영향을 다음 탐구 주제로 스스로 설정</div>
-              <div class="step-signal">→ CARE-3: 연속적 탐구 서사 완성</div>
-            </div>
-          </div>
+          <div class="page-zoom-hint">🔍 클릭해서 확대</div>
         </div>
       </div>
-    </div>
 
-    <!-- 성장 예측 탭 -->
-    <div class="tab-content" id="t3">
-      <div class="demo-growth">
-        <p style="font-size:0.83rem;color:var(--muted);margin-bottom:16px">위 탐구를 완수했을 때 예상되는 역량 변화입니다.</p>
-        <div class="growth-cards">
-          <div class="gc">
-            <div class="gc-title">진로 탐색 연속성<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">CARE-3</span></div>
-            <div class="gc-arrow">
-              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
-            </div>
-            <div class="gc-cond">1학년 탐구를 2학년 수학 과목과 연결하고, 세특에 반영됐을 때</div>
-            <div class="gc-conf cf-high" style="margin-top:6px">신뢰도 높음 ✓</div>
+      <!-- Page 3: 탐구 설계 가이드 -->
+      <div class="page-thumb" onclick="openLightbox('lb3')">
+        <div class="page-num">PAGE 3 · 탐구 설계 가이드</div>
+        <div class="page-content">
+          <div class="page-title-bar">💡 다음 한 수 · CARE-3 갭</div>
+          <div style="font-size:0.5rem;color:var(--blue);font-weight:700;margin-bottom:4px">🔬 탐구 설계 가이드</div>
+          <div style="font-size:0.5rem;color:#0c4a6e;border-left:2px solid #38bdf8;padding-left:4px;margin-bottom:4px;line-height:1.5">
+            출발점: 1학년 버블 정렬에서 '역순 입력에서 느리다'는 관찰 → 이걸 이어받기
           </div>
-          <div class="gc">
-            <div class="gc-title">탐구력<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">ACAD-3</span></div>
-            <div class="gc-arrow">
-              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
-            </div>
-            <div class="gc-cond">가설→구현→측정→한계인식의 전 과정을 세특에 담았을 때</div>
-            <div class="gc-conf cf-high" style="margin-top:6px">신뢰도 높음 ✓</div>
-          </div>
-          <div class="gc">
-            <div class="gc-title">전공 교과 이수<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">CARE-1</span></div>
-            <div class="gc-arrow">
-              <span class="lv-from">발전 중</span>→<span class="lv-from" style="color:var(--amber)">발전 중 유지</span>
-            </div>
-            <div class="gc-cond">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div>
-            <div class="gc-conf cf-mid" style="margin-top:6px">⚠ 아직 남는 갭</div>
-          </div>
-          <div class="gc">
-            <div class="gc-title">학업태도<br><span style="font-size:0.72rem;color:var(--muted);font-weight:400">ACAD-2</span></div>
-            <div class="gc-arrow">
-              <span class="lv-from">발전 중</span>→<span class="lv-to">충분</span>
-            </div>
-            <div class="gc-cond">수학 수업에서 CS 연결 의문을 교사와 공유하고 추가 탐색했을 때</div>
-            <div class="gc-conf cf-mid" style="margin-top:6px">신뢰도 보통</div>
-          </div>
+          <div class="page-mini-step"><div class="page-mini-step-el">가설 설정</div><div class="page-mini-step-tx">퀵 정렬 피벗이 성능에 영향 → 수식으로 표현</div></div>
+          <div class="page-mini-step"><div class="page-mini-step-el">구현·측정</div><div class="page-mini-step-tx">3가지 입력 조건으로 실행시간 비교</div></div>
+          <div class="page-mini-step"><div class="page-mini-step-el">한계 인식</div><div class="page-mini-step-tx">입력 크기 따른 차이 미확인 명시</div></div>
+          <div class="page-mini-step"><div class="page-mini-step-el">후속 설정</div><div class="page-mini-step-tx">캐시 지역성 → 다음 탐구 주제로</div></div>
+          <div class="page-zoom-hint">🔍 클릭해서 확대</div>
         </div>
       </div>
-    </div>
 
-    <!-- 실제 전체 샘플 리포트 (PDF) -->
-    <style>
-      .sample-real { margin-top:36px; padding-top:30px; border-top:1px dashed var(--border); }
-      .sample-real .sr-head { font-weight:800; font-size:1.05rem; margin-bottom:4px; }
-      .sample-real .sr-sub { font-size:0.85rem; color:var(--muted); margin-bottom:20px; line-height:1.6; }
-      .sr-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; }
-      .sr-thumb { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden;
-                  box-shadow:0 6px 22px rgba(15,23,42,.10); transition:transform .15s, box-shadow .15s; background:#fff; }
-      .sr-thumb:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(37,99,235,.18); }
-      .sr-thumb img { width:100%; display:block; }
-      .sr-thumb .cap { font-size:0.7rem; color:var(--muted); text-align:center; padding:7px 4px; border-top:1px solid var(--border); }
-      @media (max-width:680px){ .sr-grid { grid-template-columns:repeat(2,1fr); } }
-    </style>
-    <div class="sample-real">
-      <div class="sr-head">📄 그래서, 실제 리포트는 이렇게 생겼어요</div>
-      <div class="sr-sub">전자/전기공학 지망 학생의 <strong>실제 진단 리포트(A4 15쪽)</strong> 샘플이에요. 이미지를 누르면 전체 PDF가 열립니다.</div>
-      <div class="sr-grid">
-        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
-          <img src="/sample/page-01.png" alt="샘플 1쪽 — 한 줄 진단·종합 진단" loading="lazy">
-          <div class="cap">1쪽 · 한 줄 진단 & 종합 진단</div>
-        </a>
-        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
-          <img src="/sample/page-03.png" alt="샘플 3쪽 — 9개 역량 현황표" loading="lazy">
-          <div class="cap">3쪽 · 9개 역량 현황표</div>
-        </a>
-        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
-          <img src="/sample/page-05.png" alt="샘플 5쪽 — 우수 세특 비교" loading="lazy">
-          <div class="cap">5쪽 · 우수 세특 vs 우리 아이</div>
-        </a>
-        <a class="sr-thumb" href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener">
-          <img src="/sample/page-07.png" alt="샘플 7쪽 — 다음 한 수" loading="lazy">
-          <div class="cap">7쪽 · 다음 한 수(실행 전략)</div>
-        </a>
+      <!-- Page 4: 성장 예측 -->
+      <div class="page-thumb" onclick="openLightbox('lb4')">
+        <div class="page-num">PAGE 4 · 성장 예측</div>
+        <div class="page-content">
+          <div class="page-title-bar">📈 이 탐구 후 수준 변화 예측</div>
+          <div class="page-mini-card g" style="margin-bottom:4px">
+            <div class="page-mini-card-title">CARE-3 · 진로 탐색</div>
+            <div class="page-mini-card-body">발전 중 → <b>충분</b> · 신뢰도 높음 ✓</div>
+          </div>
+          <div class="page-mini-card g" style="margin-bottom:4px">
+            <div class="page-mini-card-title">ACAD-3 · 탐구력</div>
+            <div class="page-mini-card-body">발전 중 → <b>충분</b> · 신뢰도 높음 ✓</div>
+          </div>
+          <div class="page-mini-card y">
+            <div class="page-mini-card-title">CARE-1 · 교과 이수 ⚠</div>
+            <div class="page-mini-card-body">이 탐구로는 해결 안 됨 → 별도 이수 필요</div>
+          </div>
+          <div class="page-zoom-hint">🔍 클릭해서 확대</div>
+        </div>
       </div>
-      <div style="text-align:center">
-        <a href="/sample/setki-sample-report.pdf" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">
-          전체 샘플 PDF 열기 (15쪽) →
-        </a>
-        <p style="font-size:0.78rem;color:var(--muted);margin-top:10px">※ 가상 학생 기준 샘플 · 실제 개인정보 미포함</p>
-      </div>
-    </div>
 
+    </div><!-- /pages-grid -->
   </div>
 </section>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <div class="lightbox-header">
+      <span id="lb-title">리포트 상세</span>
+      <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+    </div>
+    <div class="lightbox-body" id="lb-body"></div>
+  </div>
+</div>
 
 <!-- 프로세스 -->
 <section style="background:#fff">
@@ -818,6 +829,23 @@
             </select>
           </div>
           <div class="field form-full">
+            <!-- NEIS+ 가이드 -->
+            <div class="neis-tip">
+              <div class="neis-tip-header" onclick="toggleNeis()">
+                <div class="neis-tip-title">📋 나이스플러스에서 생기부를 바로 가져올 수 있어요</div>
+                <span class="neis-tip-toggle" id="neis-toggle">펼치기 ↓</span>
+              </div>
+              <div class="neis-tip-body" id="neis-body">
+                <div class="neis-steps">
+                  <div class="neis-step"><div class="neis-step-num">1</div><div class="neis-step-title">나이스플러스 접속</div><div class="neis-step-desc">PC에서 nplus.go.kr 접속 후 로그인</div></div>
+                  <div class="neis-step"><div class="neis-step-num">2</div><div class="neis-step-title">학교생활기록 클릭</div><div class="neis-step-desc">메인 메뉴에서 학교생활기록 선택</div></div>
+                  <div class="neis-step"><div class="neis-step-num">3</div><div class="neis-step-title">모든 항목 선택</div><div class="neis-step-desc">전체선택 후 저장</div></div>
+                  <div class="neis-step"><div class="neis-step-num">4</div><div class="neis-step-title">내용 복사</div><div class="neis-step-desc">텍스트 복사 후 아래 붙여넣기</div></div>
+                </div>
+                <a href="https://nplus.go.kr" target="_blank" rel="noopener" class="neis-link">나이스플러스 바로가기 →</a>
+              </div>
+            </div>
+
             <label>
               학교생활기록부 내용 <span class="req">*</span>
               <span style="font-weight:400;color:var(--faint)"> — 세특·창체가 핵심, 수상·독서는 빼셔도 됩니다</span>
@@ -917,6 +945,111 @@
 
 <script>
 // 탭 전환
+// 라이트박스 콘텐츠
+const LB_CONTENT = {
+  lb1: {
+    title: 'PAGE 1 · 진단 프로필',
+    html: `<div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px">
+      <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:6px">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div>
+      <div style="font-size:0.95rem;font-style:italic;color:#e2e8f0;border-left:3px solid #3b82f6;padding-left:10px;line-height:1.6">
+        구현 경험은 있으나 '왜·얼마나·다음엔' 이 세 가지가 빠진 학생부 — 연결과 심화가 남은 2학년의 핵심 과제입니다.
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:10px;font-size:0.78rem"><b>CARE-3</b> 진로 탐색<br><span style="color:#ef4444">발전 중</span></div>
+      <div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:10px;font-size:0.78rem"><b>ACAD-3</b> 탐구력<br><span style="color:#ef4444">발전 중</span></div>
+      <div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:10px;font-size:0.78rem"><b>CARE-1</b> 교과 이수<br><span style="color:#d97706">발전 중</span></div>
+      <div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:10px;font-size:0.78rem"><b>ACAD-2</b> 학업태도<br><span style="color:#d97706">발전 중</span></div>
+    </div>`
+  },
+  lb2: {
+    title: 'PAGE 2 · 갭 진단',
+    html: `<div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:6px">🔴 GAP 1 — 진로 탐색 연속성 (CARE-3)</div>
+      <p style="font-size:0.8rem;color:#334155;line-height:1.65">1학년 2학기 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않고 있습니다. exemplary 사례는 전 학기 탐구 한계를 다음 학기 탐구의 출발점으로 이어받습니다.</p>
+      <div style="border-left:3px solid #e2e8f0;padding-left:8px;font-size:0.75rem;color:#64748b;font-style:italic;margin-top:8px">"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표하였다." → 1회성 조사에 그침</div>
+    </div>
+    <div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:6px">🔴 GAP 2 — 전공 교과 이수 (CARE-1)</div>
+      <p style="font-size:0.8rem;color:#334155;line-height:1.65">인공지능기초 미이수(학교 미개설, 공동교육과정 대안 탐색 없음). 물리학Ⅰ 미이수(이수 선택 안 함).</p>
+    </div>
+    <div style="border-left:4px solid #d97706;background:#fffbeb;border-radius:8px;padding:14px">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:6px">🟡 GAP 3 — 탐구력 깊이 (ACAD-3)</div>
+      <p style="font-size:0.8rem;color:#334155;line-height:1.65">버블 정렬 구현은 있으나 가설 설정·조건별 측정·한계 인식·후속 탐구 예고가 없음. "수행평가 우수"에서 멈춤.</p>
+    </div>`
+  },
+  lb3: {
+    title: 'PAGE 3 · 탐구 설계 가이드',
+    html: `<div style="font-weight:700;font-size:0.88rem;margin-bottom:10px">💡 ACTION 1 — CARE-3 갭 해소</div>
+    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px">
+      <div style="font-size:0.75rem;font-weight:700;color:#0369a1;margin-bottom:8px">🔬 탐구 설계 가이드</div>
+      <div style="font-size:0.8rem;color:#0c4a6e;border-left:3px solid #38bdf8;padding-left:10px;margin-bottom:12px;line-height:1.6">
+        <b>출발점:</b> 1학년 버블 정렬 구현에서 "역순 입력에서 유독 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.
+      </div>
+      ${['가설 설정|퀵 정렬 피벗이 성능에 영향 → 점화식으로 표현|ACAD-3: 교과 개념에서 자발적 의문 확장','직접 구현·측정|확률과통계 개념으로 평균 케이스 분석 + 3가지 입력 조건 실행시간 측정|CARE-3: 학기 간 탐구 연결','한계 인식|입력 크기 따른 차이 미확인 명시|ACAD-3 proficient → advanced 조건','후속 과제|캐시 지역성이 성능에 미치는 영향을 다음 탐구 주제로 설정|CARE-3: 연속 탐구 서사 완성'].map(s => {
+        const [el, detail, sig] = s.split('|');
+        return \`<div style="display:grid;grid-template-columns:80px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
+          <div style="font-size:0.72rem;font-weight:700;color:#0369a1">\${el}</div>
+          <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">\${detail}</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ \${sig}</div></div>
+        </div>\`;
+      }).join('')}
+    </div>`
+  },
+  lb4: {
+    title: 'PAGE 4 · 성장 예측',
+    html: `<p style="font-size:0.82rem;color:#64748b;margin-bottom:14px">이 탐구를 완수했을 때 예상되는 역량 변화입니다.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px">
+        <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">진로 탐색 연속성<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-3</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px">
+          <span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span>
+        </div>
+        <div style="font-size:0.76rem;color:#64748b;line-height:1.55">1학년 탐구를 2학년 수학 과목과 연결하고 세특에 반영됐을 때</div>
+        <div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
+      </div>
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px">
+        <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">탐구력<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">ACAD-3</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px">
+          <span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span>
+        </div>
+        <div style="font-size:0.76rem;color:#64748b;line-height:1.55">가설→구현→측정→한계인식의 전 과정을 세특에 담았을 때</div>
+        <div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
+      </div>
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;grid-column:1/-1">
+        <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">전공 교과 이수 ⚠<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-1</span></div>
+        <div style="font-size:0.76rem;color:#64748b;line-height:1.55">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div>
+        <div style="font-size:0.72rem;color:#d97706;margin-top:6px;font-weight:700">⚠ 아직 남는 갭</div>
+      </div>
+    </div>`
+  }
+};
+
+function openLightbox(id) {
+  const c = LB_CONTENT[id];
+  if (!c) return;
+  document.getElementById('lb-title').textContent = c.title;
+  document.getElementById('lb-body').innerHTML = c.html;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && e.type === 'click') return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// NEIS+ 가이드 토글
+function toggleNeis() {
+  const body = document.getElementById('neis-body');
+  const toggle = document.getElementById('neis-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  toggle.textContent = isOpen ? '펼치기 ↓' : '접기 ↑';
+}
+
 function switchTab(btn, id) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
