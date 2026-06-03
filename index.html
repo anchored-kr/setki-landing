@@ -1047,230 +1047,268 @@
 </footer>
 
 <script>
-/* ══════════════════════════════════
-   라이트박스
-══════════════════════════════════ */
+/* ══════════════════════════════════════════
+   세트키 랜딩 인터랙션 — 완전 재작성
+   (백틱 리터럴로 인용부호 충돌 원천 차단)
+══════════════════════════════════════════ */
+
+// ── 라이트박스 콘텐츠 ──────────────────────
+const lb1_html = `
+  <div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px">
+    <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:6px">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div>
+    <div style="font-size:0.92rem;font-style:italic;color:#e2e8f0;border-left:3px solid #3b82f6;padding-left:10px;line-height:1.6">
+      구현 경험은 있으나 '왜·얼마나·다음엔' 이 세 가지가 빠진 학생부
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-3</b> 진로 탐색<br><span style="color:#ef4444">발전 중</span></div>
+    <div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-3</b> 탐구력<br><span style="color:#ef4444">발전 중</span></div>
+    <div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-1</b> 교과 이수<br><span style="color:#d97706">발전 중</span></div>
+    <div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-2</b> 학업태도<br><span style="color:#d97706">발전 중</span></div>
+  </div>`;
+
+const lb2_html = `
+  <div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 1 — 진로 탐색 연속성 (CARE-3)</div>
+    <p style="font-size:0.82rem;color:#334155;line-height:1.65">1학년 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않습니다. exemplary 사례는 전 학기 탐구 한계를 다음 탐구의 출발점으로 이어받습니다.</p>
+    <div style="border-left:3px solid #e2e8f0;padding-left:8px;font-size:0.76rem;color:#64748b;font-style:italic;margin-top:8px">"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표하였다." → 1회성 조사에 그침</div>
+  </div>
+  <div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 2 — 전공 교과 이수 (CARE-1)</div>
+    <p style="font-size:0.82rem;color:#334155;line-height:1.65">인공지능기초 미이수(학교 미개설, 공동교육과정 대안 탐색 없음). 물리학Ⅰ 미이수(이수 선택 안 함).</p>
+  </div>
+  <div style="border-left:4px solid #d97706;background:#fffbeb;border-radius:8px;padding:14px">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🟡 GAP 3 — 탐구력 깊이 (ACAD-3)</div>
+    <p style="font-size:0.82rem;color:#334155;line-height:1.65">버블 정렬 구현은 있으나 가설 설정·조건별 측정·한계 인식·후속 탐구 예고가 없음. "수행평가 우수"에서 멈춤.</p>
+  </div>`;
+
+const lb3_html = `
+  <div style="font-weight:700;font-size:0.88rem;margin-bottom:10px">💡 ACTION 1 — CARE-3 갭 해소</div>
+  <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px">
+    <div style="font-size:0.75rem;font-weight:700;color:#0369a1;margin-bottom:8px">🔬 탐구 설계 가이드</div>
+    <div style="font-size:0.8rem;color:#0c4a6e;border-left:3px solid #38bdf8;padding-left:10px;margin-bottom:12px;line-height:1.6">
+      <b>출발점:</b> 1학년 버블 정렬에서 "역순 입력에서 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.
+    </div>
+    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
+      <div style="font-size:0.72rem;font-weight:700;color:#0369a1">가설 설정</div>
+      <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">퀵 정렬 피벗이 성능에 영향 → 점화식으로 표현</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
+      <div style="font-size:0.72rem;font-weight:700;color:#0369a1">구현·측정</div>
+      <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">3가지 입력 조건으로 실행시간 비교</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ CARE-3: 학기 간 탐구 연결</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
+      <div style="font-size:0.72rem;font-weight:700;color:#0369a1">한계 인식</div>
+      <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">입력 크기 따른 차이 미확인 명시</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3 proficient 도달 조건</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe">
+      <div style="font-size:0.72rem;font-weight:700;color:#0369a1">후속 설정</div>
+      <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">캐시 지역성 → 다음 탐구 주제로</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ CARE-3: 연속 탐구 서사 완성</div></div>
+    </div>
+  </div>`;
+
+const lb4_html = `
+  <p style="font-size:0.82rem;color:#64748b;margin-bottom:14px">이 탐구를 완수했을 때 예상되는 역량 변화입니다.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">진로 탐색 연속성 (CARE-3)</div>
+      <div style="font-size:0.82rem;font-weight:600;margin-bottom:8px">
+        <span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>
+        → <span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span>
+      </div>
+      <div style="font-size:0.75rem;color:#64748b">학기 간 탐구 연결 세특 반영 시</div>
+      <div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">탐구력 (ACAD-3)</div>
+      <div style="font-size:0.82rem;font-weight:600;margin-bottom:8px">
+        <span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>
+        → <span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span>
+      </div>
+      <div style="font-size:0.75rem;color:#64748b">가설→구현→측정→한계인식 완수 시</div>
+      <div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;grid-column:1/-1">
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">전공 교과 이수 ⚠ (CARE-1)</div>
+      <div style="font-size:0.75rem;color:#64748b">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div>
+      <div style="font-size:0.72rem;color:#d97706;margin-top:6px;font-weight:700">⚠ 아직 남는 갭</div>
+    </div>
+  </div>`;
+
 const LB_CONTENT = {
-  lb1: {
-    title: "PAGE 1 · 진단 프로필",
-    html: '<div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px"><div style="font-size:0.7rem;color:#94a3b8;margin-bottom:6px">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div><div style="font-size:0.92rem;font-style:italic;color:#e2e8f0;border-left:3px solid #3b82f6;padding-left:10px;line-height:1.6">구현 경험은 있으나 &apos;왜·얼마나·다음엔&apos; 이 세 가지가 빠진 학생부</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-3</b> 진로 탐색<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-3</b> 탐구력<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-1</b> 교과 이수<br><span style="color:#d97706">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-2</b> 학업태도<br><span style="color:#d97706">발전 중</span></div></div>'
-  },
-  lb2: {
-    title: "PAGE 2 · 갭 진단",
-    html: '<div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 1 — 진로 탐색 연속성 (CARE-3)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">1학년 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않습니다. exemplary 사례는 전 학기 탐구 한계를 다음 탐구의 출발점으로 이어받습니다.</p><div style="border-left:3px solid #e2e8f0;padding-left:8px;font-size:0.76rem;color:#64748b;font-style:italic;margin-top:8px">"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표하였다." → 1회성 조사에 그침</div></div><div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 2 — 전공 교과 이수 (CARE-1)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">인공지능기초 미이수(학교 미개설, 공동교육과정 대안 탐색 없음). 물리학Ⅰ 미이수(이수 선택 안 함).</p></div><div style="border-left:4px solid #d97706;background:#fffbeb;border-radius:8px;padding:14px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🟡 GAP 3 — 탐구력 깊이 (ACAD-3)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">버블 정렬 구현은 있으나 가설 설정·조건별 측정·한계 인식·후속 탐구 예고가 없음. "수행평가 우수"에서 멈춤.</p></div>'
-  },
-  lb3: {
-    title: "PAGE 3 · 탐구 설계 가이드",
-    html: '<div style="font-weight:700;font-size:0.88rem;margin-bottom:10px">💡 ACTION 1 — CARE-3 갭 해소</div><div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px"><div style="font-size:0.75rem;font-weight:700;color:#0369a1;margin-bottom:8px">🔬 탐구 설계 가이드</div><div style="font-size:0.8rem;color:#0c4a6e;border-left:3px solid #38bdf8;padding-left:10px;margin-bottom:12px;line-height:1.6"><b>출발점:</b> 1학년 버블 정렬에서 "역순 입력에서 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.</div><div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-          <div style="font-size:0.72rem;font-weight:700;color:#0369a1">가설 설정</div>
-          <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">퀵 정렬 피벗이 성능에 영향 → 점화식으로 표현</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div></div>
-        </div><div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-          <div style="font-size:0.72rem;font-weight:700;color:#0369a1">직접 구현·측정</div>
-          <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">확률과통계 개념으로 평균 케이스 분석 + 3가지 입력 조건 실행시간 측정</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ CARE-3: 학기 간 탐구 연결</div></div>
-        </div><div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-          <div style="font-size:0.72rem;font-weight:700;color:#0369a1">한계 인식</div>
-          <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">입력 크기 따른 차이 미확인 명시</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3 proficient → advanced 조건</div></div>
-        </div><div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-          <div style="font-size:0.72rem;font-weight:700;color:#0369a1">후속 과제</div>
-          <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">캐시 지역성이 성능에 미치는 영향을 다음 탐구 주제로 설정</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ CARE-3: 연속 탐구 서사 완성</div></div>
-        </div></div>'
-  },
-  lb4: {
-    title: "PAGE 4 · 성장 예측",
-    html: '<p style="font-size:0.82rem;color:#64748b;margin-bottom:14px">이 탐구를 완수했을 때 예상되는 역량 변화입니다.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">진로 탐색 연속성<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-3</span></div><div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px"><span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">1학년 탐구를 2학년 수학 과목과 연결하고 세특에 반영됐을 때</div><div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div></div><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">탐구력<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">ACAD-3</span></div><div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px"><span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">가설→구현→측정→한계인식의 전 과정을 세특에 담았을 때</div><div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div></div><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;grid-column:1/-1"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">전공 교과 이수 ⚠<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-1</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div><div style="font-size:0.72rem;color:#d97706;margin-top:6px;font-weight:700">⚠ 아직 남는 갭</div></div></div>'
-  }
+  lb1: { title: 'PAGE 1 · 진단 프로필',    html: lb1_html },
+  lb2: { title: 'PAGE 2 · 갭 진단',         html: lb2_html },
+  lb3: { title: 'PAGE 3 · 탐구 설계 가이드', html: lb3_html },
+  lb4: { title: 'PAGE 4 · 성장 예측',        html: lb4_html },
 };
 
+// ── 라이트박스 열기/닫기 ──────────────────
 function openLightbox(id) {
-  const c = LB_CONTENT[id];
+  var c = LB_CONTENT[id];
   if (!c) return;
   document.getElementById('lb-title').textContent = c.title;
   document.getElementById('lb-body').innerHTML = c.html;
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
+var lbEl = document.getElementById('lightbox');
+if (lbEl) lbEl.addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
 // ── 상품 선택 & 대학 선택 ──────────────────
-const UNIVS = ["서울대학교","연세대학교","고려대학교","성균관대학교","한양대학교","서강대학교","이화여자대학교","한국외국어대학교","중앙대학교","경희대학교","홍익대학교","건국대학교","숙명여자대학교","동국대학교","단국대학교","인하대학교","아주대학교","가천대학교","국민대학교","세종대학교","KAIST","포항공과대학교(POSTECH)","UNIST","DGIST","부산대학교","경북대학교","전남대학교","전북대학교","충남대학교","충북대학교","강원대학교","제주대학교"];
+var UNIVS = ["서울대학교","연세대학교","고려대학교","성균관대학교","한양대학교","서강대학교","이화여자대학교","한국외국어대학교","중앙대학교","경희대학교","홍익대학교","건국대학교","숙명여자대학교","동국대학교","단국대학교","인하대학교","아주대학교","가천대학교","국민대학교","세종대학교","KAIST","포항공과대학교(POSTECH)","UNIST","DGIST","부산대학교","경북대학교","전남대학교","전북대학교","충남대학교","충북대학교","강원대학교","제주대학교"];
 
 function buildUnivSelects(count) {
-  const grid = document.getElementById('univ-grid');
+  var grid = document.getElementById('univ-grid');
+  if (!grid) return;
   grid.className = 'univ-grid ' + (count === 1 ? 'cols-1' : 'cols-3');
   grid.innerHTML = '';
-  for (let i = 1; i <= count; i++) {
-    const div = document.createElement('div');
+  for (var i = 1; i <= count; i++) {
+    var div = document.createElement('div');
     div.className = 'univ-select-item';
-    const lbl = count === 1 ? '목표 대학' : '대학 ' + i;
-    let opts = '<option value="">선택하세요</option>';
-    UNIVS.forEach(u => { opts += '<option value="' + u + '">' + u + '</option>'; });
-    div.innerHTML = '<label for="univ_' + i + '">' + lbl + '</label><select name="univ_' + i + '" id="univ_' + i + '" required>' + opts + '</select>';
+    var lbl = count === 1 ? '목표 대학' : '대학 ' + i;
+    var opts = '<option value="">선택하세요</option>';
+    UNIVS.forEach(function(u) { opts += '<option value="' + u + '">' + u + '</option>'; });
+    div.innerHTML = '<label>' + lbl + '</label><select name="univ_' + i + '">' + opts + '</select>';
     grid.appendChild(div);
   }
 }
 
 function selectProduct(type) {
-  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('active'));
-  const idMap = {'기본':'btn-basic','심화':'btn-sima','종합':'btn-jonghap'};
-  const btn = document.getElementById(idMap[type]);
+  document.querySelectorAll('.product-btn').forEach(function(b) { b.classList.remove('active'); });
+  var idMap = { '기본': 'btn-basic', '심화': 'btn-sima', '종합': 'btn-jonghap' };
+  var btn = document.getElementById(idMap[type]);
   if (btn) btn.classList.add('active');
-  document.getElementById('product_type_input').value = type;
-
-  const sec = document.getElementById('univ-section');
-  const label = document.getElementById('univ-label-text');
-
-  // 기존 선택 required 해제
-  document.querySelectorAll('[name^="univ_"]').forEach(el => el.required = false);
-
+  var inp = document.getElementById('product_type_input');
+  if (inp) inp.value = type;
+  var sec = document.getElementById('univ-section');
+  var label = document.getElementById('univ-label-text');
+  if (!sec) return;
   if (type === '기본') {
     sec.style.display = 'none';
   } else if (type === '심화') {
     sec.style.display = 'block';
-    label.textContent = '분석할 목표 대학 선택 (1개)';
+    if (label) label.textContent = '분석할 목표 대학 선택 (1개)';
     buildUnivSelects(1);
   } else {
     sec.style.display = 'block';
-    label.textContent = '비교할 목표 대학 선택 (3개)';
+    if (label) label.textContent = '비교할 목표 대학 선택 (3개)';
     buildUnivSelects(3);
   }
 }
 
-// NEIS+ 토글
+// ── NEIS+ 토글 ────────────────────────────
 function toggleNeis() {
-  const body = document.getElementById('neis-body');
-  const toggle = document.getElementById('neis-toggle');
+  var body = document.getElementById('neis-body');
+  var toggle = document.getElementById('neis-toggle');
   if (!body || !toggle) return;
-  const isOpen = body.classList.contains('open');
-  if (isOpen) {
-    body.classList.remove('open');
-    toggle.textContent = '펼치기 ↓';
-  } else {
-    body.classList.add('open');
-    toggle.textContent = '접기 ↑';
-  }
+  var isOpen = body.classList.contains('open');
+  body.classList[isOpen ? 'remove' : 'add']('open');
+  toggle.textContent = isOpen ? '펼치기 ↓' : '접기 ↑';
 }
 
-// 탭 전환
+// ── 탭 전환 ──────────────────────────────
 function switchTab(btn, id) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(t => {
-    t.classList.remove('active');
-    t.style.display = 'none';
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-content').forEach(function(t) {
+    t.classList.remove('active'); t.style.display = 'none';
   });
   btn.classList.add('active');
-  const target = document.getElementById(id);
+  var target = document.getElementById(id);
+  if (!target) return;
   target.style.display = 'block';
-  requestAnimationFrame(() => target.classList.add('active'));
+  requestAnimationFrame(function() { target.classList.add('active'); });
 }
 
-// FAQ 토글
+// ── FAQ 토글 ──────────────────────────────
 function toggleFaq(btn) {
-  const ans = btn.nextElementSibling;
-  const isOpen = ans.classList.contains('open');
-  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
-  document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+  var ans = btn.nextElementSibling;
+  if (!ans) return;
+  var isOpen = ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(function(a) { a.classList.remove('open'); });
+  document.querySelectorAll('.faq-q').forEach(function(b) { b.classList.remove('open'); });
   if (!isOpen) { ans.classList.add('open'); btn.classList.add('open'); }
 }
 
-// 폼 제출
-document.getElementById('submit-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = '제출 중...';
-  try {
-    const resp = await fetch('https://formsubmit.co/ajax/hello@setki.me', { method: 'POST', body: new FormData(this) });
-    if (resp.ok) {
-      this.style.display = 'none';
-      document.getElementById('success').style.display = 'block';
-    } else {
-      alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
-      btn.disabled = false; btn.textContent = '📩 진단 신청하기';
-    }
-  } catch {
-    alert('네트워크 오류입니다. 다시 시도해주세요.');
-    btn.disabled = false; btn.textContent = '📩 진단 신청하기';
-  }
-});
+// ── 폼 제출 ──────────────────────────────
+var submitForm = document.getElementById('submit-form');
+if (submitForm) {
+  submitForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submit-btn');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = '제출 중...';
+    fetch('https://formsubmit.co/ajax/hello@setki.me', { method: 'POST', body: new FormData(this) })
+      .then(function(resp) {
+        if (resp.ok) {
+          submitForm.style.display = 'none';
+          var suc = document.getElementById('success');
+          if (suc) suc.style.display = 'block';
+        } else {
+          alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+          btn.disabled = false; btn.textContent = '📩 진단 신청하기';
+        }
+      })
+      .catch(function() {
+        alert('네트워크 오류입니다. 다시 시도해주세요.');
+        btn.disabled = false; btn.textContent = '📩 진단 신청하기';
+      });
+  });
+}
 
-/* ══════════════════════════════════
-   애니메이션 & 인터랙션 JS
-══════════════════════════════════ */
-// ① 히어로 텍스트 — CSS keyframe 처리로 변경됨 (JS 불필요)
-
-// ② Intersection Observer — 스크롤 진입 애니메이션
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+// ── 스크롤 애니메이션 ─────────────────────
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
     if (!entry.isIntersecting) return;
     entry.target.classList.add('visible');
-    const numEl = entry.target.querySelector('[data-count]');
+    var numEl = entry.target.querySelector('[data-count]');
     if (numEl) animateCount(numEl);
     io.unobserve(entry.target);
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-animate]').forEach(function(el) { io.observe(el); });
 
-document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
-
-// ③ 통계 숫자 카운트업
 function animateCount(el) {
-  const target = parseInt(el.dataset.count, 10);
-  const span = el.querySelector('span');
-  let current = 0;
-  const step = target / (900 / 16);
-  const timer = setInterval(() => {
+  var target = parseInt(el.dataset.count, 10);
+  var span = el.querySelector('span');
+  var current = 0;
+  var step = target / (900 / 16);
+  var timer = setInterval(function() {
     current = Math.min(current + step, target);
     if (span) span.textContent = Math.floor(current);
     if (current >= target) clearInterval(timer);
   }, 16);
 }
 
-// ④ 네비 스크롤 쉐도우
-const navEl = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  navEl.classList.toggle('scrolled', window.scrollY > 30);
-}, { passive: true });
+// ── 네비 쉐도우 ──────────────────────────
+var navEl = document.querySelector('nav');
+if (navEl) {
+  window.addEventListener('scroll', function() {
+    navEl.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+}
 
-// ⑤ 버튼 리플 효과
-document.querySelectorAll('.btn-primary, .nav-cta, .pricing-cta').forEach(btn => {
+// ── 버튼 리플 ────────────────────────────
+document.querySelectorAll('.btn-primary, .nav-cta, .pricing-cta').forEach(function(btn) {
   btn.addEventListener('click', function(e) {
-    const ripple = document.createElement('span');
-    const rect = this.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.35);width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;transform:scale(0);animation:ripple .5s ease-out forwards;pointer-events:none;`;
-    this.style.position='relative'; this.style.overflow='hidden';
+    var ripple = document.createElement('span');
+    var rect = this.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,.35);width:' + size + 'px;height:' + size + 'px;left:' + (e.clientX - rect.left - size/2) + 'px;top:' + (e.clientY - rect.top - size/2) + 'px;transform:scale(0);animation:ripple .5s ease-out forwards;pointer-events:none;';
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
     this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 550);
+    setTimeout(function() { ripple.parentNode && ripple.parentNode.removeChild(ripple); }, 550);
   });
 });
-
-const rippleStyle = document.createElement('style');
+var rippleStyle = document.createElement('style');
 rippleStyle.textContent = '@keyframes ripple { to { transform:scale(2.5); opacity:0; } }';
 document.head.appendChild(rippleStyle);
-
-// ⑥ 마우스 패럴랙스 — 히어로 프리뷰 카드
-const previewCard = document.querySelector('.hero-preview');
-if (previewCard) {
-  document.querySelector('.hero-inner')?.addEventListener('mousemove', (e) => {
-    const rect = previewCard.getBoundingClientRect();
-    const dx = (e.clientX - rect.left - rect.width/2) / 28;
-    const dy = (e.clientY - rect.top - rect.height/2) / 28;
-    previewCard.style.transform = `rotateY(${dx*.6}deg) rotateX(${-dy*.6}deg)`;
-  });
-  document.querySelector('.hero-inner')?.addEventListener('mouseleave', () => {
-    previewCard.style.transform = '';
-  });
-}
 </script>
 </body>
 </html>
