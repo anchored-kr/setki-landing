@@ -1069,109 +1069,15 @@
 ══════════════════════════════════════════ */
 
 // ── 라이트박스 콘텐츠 ──────────────────────
-const lb1_html = `
-  <div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px">
-    <div style="font-size:0.72rem;color:#60a5fa;margin-bottom:2px;font-weight:700">🔑 세트키 진단 리포트 · 종합 분석 버전</div>
-    <div style="font-weight:800;font-size:1rem;margin-bottom:6px">경영/경제 지망 · 고2 · 연세대 경영대학 지망</div>
-    <div style="font-size:0.82rem;color:#94a3b8">분석 기준: 학종 9개 평가요소 + 경영/경제 루브릭</div>
-  </div>
-  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin-bottom:12px">
-    <div style="font-size:0.72rem;font-weight:700;color:#1d4ed8;margin-bottom:6px">📋 한 줄 진단</div>
-    <div style="font-size:0.92rem;font-weight:700;color:#1e3a8a;line-height:1.65">사회·경제 현상을 '데이터로 따져 보려는' 태도와 '사람을 모아 이끄는' 힘이 함께 관찰되는, 경영계에 잘 어울리는 결입니다. 다만 <span style="background:#fef9c3;padding:0 3px;border-radius:3px;">상경계의 변별 요소인 수리(數理) 역량</span>을 끌어올리는 것이 분명한 다음 과제로 읽힙니다.</div>
-  </div>
-  <div style="font-size:0.82rem;color:#334155;line-height:1.75">
-    경제(원점수 91, 과목평균 63.2)와 사회·문화에서 안정적으로 높은 성취가 관찰되고, 편의점 도시락의 가격과 판매량을 직접 관찰·기록해 본 활동은 경영·경제에서 중요하게 보는 '현상을 자료로 확인하는' 자세를 보여 줍니다. 학급 회장·동아리 부장으로서 의견을 조율하고 합의를 이끈 경험은 경영계에서 특히 비중 있게 평가되는 강점입니다.
-  </div>`;
 
-const lb2_html = `
-  <const lb2_html = `
-  <div style="font-size:0.8rem;font-weight:700;color:#0f172a;margin-bottom:10px">📊 9개 역량 현황</div>
-  <table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-bottom:10px">
-    <thead><tr style="background:#f1f5f9">
-      <th style="padding:7px 10px;text-align:left;font-size:0.75rem;color:#334155">역량</th>
-      <th style="padding:7px 10px;text-align:center;font-size:0.75rem;color:#334155">현 수준</th>
-      <th style="padding:7px 10px;text-align:left;font-size:0.75rem;color:#334155">한줄 코멘트</th>
-    </tr></thead>
-    <tbody>
-      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">학업성취도</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">경제·사회 A로 안정적, 수학 B가 상한선</td></tr>
-      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">학업태도</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">궁금증을 직접 관찰·조사로 확인하는 능동성</td></tr>
-      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">탐구력</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td sconst lb3_html = `
-  <div style="font-weight:700;font-size:0.9rem;margin-bottom:10px">🔍 역량별 상세 진단 — 탐구력(ACAD-3)</div>
-  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-bottom:10px">
-    <div style="font-weight:700;font-size:0.85rem;margin-bottom:6px">③ 탐구력 (ACAD-3) — <span style="color:#16a34a">충분</span> · 핵심 역량</div>
-    <p style="font-size:0.8rem;color:#334155;line-height:1.65;margin-bottom:8px">자녀는 '직접 자료 수집 → 정리 → 한계 인식'이라는 탐구의 뼈대를 이미 경험했고, 특히 표본·요인 통제의 한계를 스스로 짚은 점이 인상적입니다. 다만 그 한계를 보완해 다시 측정하거나 통계로 분석하는 단계로 닫히지 않은 점이 다음 단계와의 경계선입니다.</p>
-    <div style="background:#f8fafc;border-left:3px solid #cbd5e1;padding:6px 12px;font-size:0.8rem;color:#475569;font-style:italic;margin-bottom:10px">"가격이 낮은 품목의 판매량이 많은 경향을 확인했으나, 표본이 적고 날씨·요일 등 다른 요인을 통제하지 못한 점을 스스로 한계로 언급함"</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:10px;font-size:0.78rem">
-        <div style="font-weight:700;color:#15803d;margin-bottom:4px">🟢 우수 세특</div>
-        문제 정의 → 직접 자료 수집 → 요인 통제 재측정 → 가격탄력성 수치 해석 → 인과 아닌 상관 구분
-      </div>
-      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:7px;padding:10px;font-size:0.78rem">
-        <div style="font-weight:700;color:#c2410c;margin-bottom:4px">📍 지금 우리 아이</div>
-        직접 관찰·기록과 한계 인식까지 도달. 한계를 보완한 재측정이나 탄력성 수치 해석은 아직 미완.
-      </div>
-    </div>
-  </div>
-  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:7px;padding:12px;font-size:0.8rem;color:#1e3a8a">
-    <b>다음 목표:</b> 같은 편의점 탐구를 '요인을 통제한 재측정 + 수치 해석'으로 확장하면, 지금의 좋은 경험이 '우수' 수준으로 바뀝니다.
-  </div>`;니다.
-    </div>
-    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-      <div style="font-size:0.72rem;font-weight:700;color:#0369a1">가설 설정</div>
-      <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">퀵 정렬 피벗이 성능에 영향 → 점화식으로 표현</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
-      <div styleconst lb4_html = `
-  <div style="font-weight:700;font-size:0.9rem;margin-bottom:12px">💡 다음 한 수 — 학기별 실행 전략</div>
-  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-bottom:10px">
-    <div style="font-weight:800;font-size:0.88rem;margin-bottom:8px;color:#0f172a">1. 편의점 탐구를 '요인 통제 + 수치 해석'으로 다시 닫기</div>
-    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:7px;padding:10px 14px">
-      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">출발 질문</span>가격이 낮으면 정말 더 팔릴까? 요인을 통제하면 관계가 더 또렷해질까?</div>
-      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">직접 측정</span>요일·시간대를 통제해 가격대별 판매량 재기록</div>
-      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">조건 비교</span>가격 변화율 대비 판매량 변화율(가격탄력성) 계산</div>
-      <div style="font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">한계 인식</span>표본·매장 한 곳의 한계, 상관과 인과의 구분 명시</div>
-    </div>
-    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:0.78rem;color:#6b21a8"><b>예상 산출물:</b> 요인 통제 데이터 + 품목별 탄력성 비교 → 탐구력 충분 → 우수</div>
-  </div>
-  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px">
-    <div style="font-weight:800;font-size:0.88rem;margin-bottom:8px;color:#0f172a">2. 확률과통계를 동아리 자료에 '써먹기'</div>
-    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:7px;padding:10px 14px">
-      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">출발 질문</span>토론 때 인용한 통계청 고용동향 자료를 내가 직접 분석하면?</div>
-      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">직접 구현</span>연령대별 실업률을 표·그래프로 정리, 평균·비율 직접 계산</div>
-      <div style="font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">연결</span>확률과통계 배운 개념을 실제 데이터에 적용한 흔적 남기기</div>
-    </div>
-    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:0.78rem;color:#6b21a8"><b>예상 산출물:</b> 교과 이수 → 강점 전환 (이수했다 → 써먹었다)</div>
-  </div>`;yle="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
-    </div>
-    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px">
-      <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">탐구력 (ACAD-3)</div>
-      <div style="font-size:0.82rem;font-weight:600;margin-bottom:8px">
-        <span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>
-        → <span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span>
-      </div>
-      <div style="font-size:0.75rem;color:#64748b">가설→구현→측정→한계인식 완수 시</div>
-      <div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div>
-    </div>
-    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;grid-column:1/-1">
-      <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">전공 교과 이수 ⚠ (CARE-1)</div>
-      <div style="font-size:0.75rem;color:#64748b">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div>
-      <div style="font-size:0.72rem;color:#d97706;margin-top:6px;font-weight:700">⚠ 아직 남는 갭</div>
-    </div>
-  </div>`;
 
-const LB_CONTENT = {
-  lb1: { title: 'PAGE 1 · 진단 프로필',    html: lb1_html },
-  lb2: { title: 'PAGE 2 · 갭 진단',         html: lb2_html },
-  lb3: { title: 'PAGE 3 · 탐구 설계 가이드', html: lb3_html },
-  lb4: { title: 'PAGE 4 · 성장 예측',        html: lb4_html },
-};
 
 // ── 라이트박스 열기/닫기 ──────────────────
 function openLightbox(id) {
-  var c = LB_CONTENT[id];
-  if (!c) return;
-  document.getElementById('lb-title').textContent = c.title;
-  document.getElementById('lb-body').innerHTML = c.html;
+  var dataEl = document.getElementById(id + '-data');
+  if (!dataEl) return;
+  document.getElementById('lb-title').textContent = dataEl.getAttribute('data-title');
+  document.getElementById('lb-body').innerHTML = dataEl.innerHTML;
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1350,5 +1256,90 @@ var rippleStyle = document.createElement('style');
 rippleStyle.textContent = '@keyframes ripple { to { transform:scale(2.5); opacity:0; } }';
 document.head.appendChild(rippleStyle);
 </script>
+
+<!-- ═══ 라이트박스 콘텐츠 (숨김 div — JS string 대신 HTML로 관리) ═══ -->
+<div id="lb1-data" data-title="PAGE 1 · 표지 / 한 줄 진단" hidden>
+  <div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px">
+    <div style="font-size:0.72rem;color:#60a5fa;margin-bottom:2px;font-weight:700">🔑 세트키 진단 리포트 · 종합 분석 버전</div>
+    <div style="font-weight:800;font-size:1rem;margin-bottom:6px">경영/경제 지망 · 고2 · 연세대 경영대학 지망</div>
+    <div style="font-size:0.82rem;color:#94a3b8">분석 기준: 학종 9개 평가요소 + 경영/경제 루브릭</div>
+  </div>
+  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin-bottom:12px">
+    <div style="font-size:0.72rem;font-weight:700;color:#1d4ed8;margin-bottom:6px">📋 한 줄 진단</div>
+    <div style="font-size:0.92rem;font-weight:700;color:#1e3a8a;line-height:1.65">사회·경제 현상을 '데이터로 따져 보려는' 태도와 '사람을 모아 이끄는' 힘이 함께 관찰되는, 경영계에 잘 어울리는 결입니다. 다만 <span style="background:#fef9c3;padding:0 3px;border-radius:3px;">상경계의 변별 요소인 수리(數理) 역량</span>을 끌어올리는 것이 분명한 다음 과제로 읽힙니다.</div>
+  </div>
+  <div style="font-size:0.82rem;color:#334155;line-height:1.75">
+    경제(원점수 91, 과목평균 63.2)와 사회·문화에서 안정적으로 높은 성취가 관찰됩니다. 편의점 도시락의 가격과 판매량을 직접 관찰·기록해 본 활동은 '현상을 자료로 확인하는' 자세를 보여 줍니다. 학급 회장·동아리 부장으로서 의견을 조율하고 합의를 이끈 경험은 경영계에서 특히 비중 있게 평가되는 강점입니다.
+  </div>
+</div>
+
+<div id="lb2-data" data-title="PAGE 2 · 9개 역량 현황" hidden>
+  <div style="font-size:0.8rem;font-weight:700;color:#0f172a;margin-bottom:10px">📊 9개 역량 현황</div>
+  <table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-bottom:10px">
+    <thead><tr style="background:#f1f5f9">
+      <th style="padding:7px 10px;text-align:left;font-size:0.75rem;color:#334155">역량</th>
+      <th style="padding:7px 10px;text-align:center;font-size:0.75rem;color:#334155">현 수준</th>
+      <th style="padding:7px 10px;text-align:left;font-size:0.75rem;color:#334155">한줄 코멘트</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">학업성취도</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">경제·사회 A로 안정적, 수학 B가 상한선</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">학업태도</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">궁금증을 직접 관찰·조사로 확인하는 능동성</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">탐구력</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">직접 관찰·한계 인식까지, 통계 분석 깊이는 과제</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fffbeb"><td style="padding:7px 10px"><b>전공 교과 이수</b></td><td style="text-align:center;padding:7px 10px"><span style="color:#d97706;font-weight:700">발전중</span></td><td style="padding:7px 10px;color:#64748b">미적분·확률과통계 미이수가 변별점</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">전공 교과 성취</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">경제 A·분석 산출물 기재</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">진로 탐색</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">시장·가격·정책 주제가 학기 간 연속</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9"><td style="padding:7px 10px">협업·소통</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">예산 합의·역할 분담 — 경영계 강점</td></tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fffbeb"><td style="padding:7px 10px"><b>성실성</b></td><td style="text-align:center;padding:7px 10px"><span style="color:#d97706;font-weight:700">발전중</span></td><td style="padding:7px 10px;color:#64748b">역할 수행은 보이나 장기 꾸준함은 더 필요</td></tr>
+      <tr><td style="padding:7px 10px">리더십</td><td style="text-align:center;padding:7px 10px"><span style="color:#16a34a;font-weight:700">충분</span></td><td style="padding:7px 10px;color:#64748b">회장·부장으로 합의·기획 견인 — 경영계 강점</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.72rem;color:#94a3b8">수준: 초기 → 발전중 → 충분 → 우수</p>
+</div>
+
+<div id="lb3-data" data-title="PAGE 3 · 상세 진단 (탐구력)" hidden>
+  <div style="font-weight:700;font-size:0.9rem;margin-bottom:10px">🔍 역량별 상세 진단 — 탐구력(ACAD-3)</div>
+  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-bottom:10px">
+    <div style="font-weight:700;font-size:0.85rem;margin-bottom:6px">③ 탐구력 (ACAD-3) — <span style="color:#16a34a">충분</span> · 핵심 역량</div>
+    <p style="font-size:0.8rem;color:#334155;line-height:1.65;margin-bottom:8px">자녀는 직접 자료 수집, 정리, 한계 인식이라는 탐구의 뼈대를 이미 경험했고, 특히 표본·요인 통제의 한계를 스스로 짚은 점이 인상적입니다. 다만 그 한계를 보완해 다시 측정하거나 통계로 분석하는 단계로 닫히지 않은 점이 다음 단계와의 경계선입니다.</p>
+    <div style="background:#f8fafc;border-left:3px solid #cbd5e1;padding:6px 12px;font-size:0.8rem;color:#475569;font-style:italic;margin-bottom:10px">"가격이 낮은 품목의 판매량이 많은 경향을 확인했으나, 표본이 적고 날씨·요일 등 다른 요인을 통제하지 못한 점을 스스로 한계로 언급함"</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:10px;font-size:0.78rem">
+        <div style="font-weight:700;color:#15803d;margin-bottom:4px">🟢 우수 세특</div>
+        문제 정의, 직접 자료 수집, 요인 통제 재측정, 가격탄력성 수치 해석, 인과 아닌 상관 구분
+      </div>
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:7px;padding:10px;font-size:0.78rem">
+        <div style="font-weight:700;color:#c2410c;margin-bottom:4px">📍 지금 우리 아이</div>
+        직접 관찰·기록과 한계 인식까지 도달. 한계를 보완한 재측정이나 탄력성 수치 해석은 아직 미완.
+      </div>
+    </div>
+  </div>
+  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:7px;padding:12px;font-size:0.8rem;color:#1e3a8a">
+    <b>다음 목표:</b> 같은 편의점 탐구를 요인을 통제한 재측정과 수치 해석으로 확장하면, 지금의 좋은 경험이 우수 수준으로 바뀝니다.
+  </div>
+</div>
+
+<div id="lb4-data" data-title="PAGE 4 · 다음 한 수" hidden>
+  <div style="font-weight:700;font-size:0.9rem;margin-bottom:12px">💡 다음 한 수 — 학기별 실행 전략</div>
+  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-bottom:10px">
+    <div style="font-weight:800;font-size:0.88rem;margin-bottom:8px;color:#0f172a">1. 편의점 탐구를 요인 통제 + 수치 해석으로 다시 닫기</div>
+    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:7px;padding:10px 14px">
+      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">출발 질문</span>가격이 낮으면 정말 더 팔릴까? 요인을 통제하면 관계가 더 또렷해질까?</div>
+      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">직접 측정</span>요일·시간대를 통제해 가격대별 판매량 재기록</div>
+      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">조건 비교</span>가격 변화율 대비 판매량 변화율(가격탄력성) 계산</div>
+      <div style="font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">한계 인식</span>표본·매장 한 곳의 한계, 상관과 인과의 구분 명시</div>
+    </div>
+    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:0.78rem;color:#6b21a8"><b>예상 산출물:</b> 요인 통제 데이터 + 품목별 탄력성 비교 — 탐구력 충분에서 우수로</div>
+  </div>
+  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px">
+    <div style="font-weight:800;font-size:0.88rem;margin-bottom:8px;color:#0f172a">2. 확률과통계를 동아리 자료에 써먹기</div>
+    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:7px;padding:10px 14px">
+      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">출발 질문</span>토론 때 인용한 통계청 고용동향 자료를 내가 직접 분석하면?</div>
+      <div style="margin-bottom:4px;font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">직접 구현</span>연령대별 실업률을 표·그래프로 정리, 평균·비율 직접 계산</div>
+      <div style="font-size:0.8rem"><span style="display:inline-block;min-width:80px;font-weight:700;color:#0369a1">연결</span>확률과통계 배운 개념을 실제 데이터에 적용한 흔적 남기기</div>
+    </div>
+    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:0.78rem;color:#6b21a8"><b>예상 산출물:</b> 교과 이수를 강점으로 전환 (이수했다에서 써먹었다로)</div>
+  </div>
+</div>
+
 </body>
 </html>
