@@ -933,6 +933,24 @@
             </select>
           </div>
           <div class="field form-full">
+            <label>학교 유형 <span class="req">*</span>
+              <span style="font-weight:400;color:var(--faint)"> — 진단 기준·전형 경로 보정에 활용됩니다</span>
+            </label>
+            <select name="school_type" required>
+              <option value="">선택하세요</option>
+              <option value="일반고">일반고</option>
+              <option value="자사고">자율형사립고 (자사고)</option>
+              <option value="외고">외국어고 / 국제고</option>
+              <option value="과학고">과학고 / 영재학교</option>
+              <option value="특성화고">특성화고 (직업계)</option>
+              <option value="예술체육고">예술고 / 체육고</option>
+              <option value="기타">기타</option>
+            </select>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:5px;line-height:1.6;">
+              💡 과학고·영재학교는 R&amp;E·전문교과 기준으로, 특성화고는 직업·취업 경로 기준으로 보정됩니다.
+            </div>
+          </div>
+          <div class="field form-full">
             <!-- NEIS+ 가이드 -->
             <div class="neis-tip">
               <div class="neis-tip-header" onclick="toggleNeis()" style="cursor:pointer;user-select:none;">
