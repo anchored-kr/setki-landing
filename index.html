@@ -298,6 +298,36 @@
       animation: fallbackShow .6s ease .8s both;
     }
 
+
+    /* ── 상품 선택 ── */
+    .product-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+    .product-btn {
+      border: 2px solid var(--border); border-radius: 10px; padding: 14px 12px;
+      cursor: pointer; background: #fff; text-align: left;
+      transition: border-color .15s, background .15s, box-shadow .15s;
+      font-family: inherit;
+    }
+    .product-btn:hover { border-color: var(--blue); background: #f8fafc; }
+    .product-btn.active { border-color: var(--blue); background: var(--blue-light); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+    .product-tier { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+    .product-name { font-size: 0.92rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .product-price-tag { font-size: 1.1rem; font-weight: 900; color: var(--blue); }
+    .product-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .product-btn.active .product-tier { color: var(--blue); }
+    .product-btn.active .product-name { color: var(--blue-dark); }
+
+    /* 대학 선택 */
+    .univ-selector-wrap { background: var(--blue-light); border: 1px solid #bfdbfe; border-radius: 10px; padding: 16px; margin-top: 4px; }
+    .univ-selector-wrap .univ-label { font-size: 0.82rem; font-weight: 600; color: var(--blue); margin-bottom: 10px; }
+    .univ-grid { display: grid; gap: 8px; }
+    .univ-grid.cols-1 { grid-template-columns: 1fr; }
+    .univ-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .univ-select-item label { font-size: 0.74rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 4px; }
+    @media (max-width: 640px) {
+      .product-selector { grid-template-columns: 1fr; }
+      .univ-grid.cols-3 { grid-template-columns: 1fr; }
+    }
+
     /* ── 신청 폼 ── */
     .form-bg { background: var(--bg); }
     .form-card { background: #fff; border: 1px solid var(--border); border-radius: 20px;
@@ -787,9 +817,8 @@
 
         <!-- 비교팩 -->
         <div style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.25);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:8px;right:60px;background:#3b82f6;color:#fff;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:99px;letter-spacing:.04em">핵심 업셀</div>
           <div>
-            <div style="font-size:0.72rem;color:#60a5fa;margin-bottom:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">애드온</div>
+            <div style="font-size:0.72rem;color:#60a5fa;margin-bottom:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">종합</div>
             <div style="font-size:1rem;font-weight:700;color:#fff">+ 대학 비교팩 (3개 묶음)</div>
             <div style="font-size:0.78rem;color:#94a3b8;margin-top:3px">목표 대학 3곳 나란히 비교 — 어디가 더 맞는지 한눈에</div>
           </div>
@@ -814,6 +843,41 @@
 
       <form id="submit-form" action="/submit" method="POST">
         <div class="form-grid">
+          <div class="field form-full" style="margin-bottom:20px">
+            <label>상품 선택 <span class="req">*</span></label>
+            <div class="product-selector">
+              <button type="button" class="product-btn active" id="btn-basic" onclick="selectProduct('기본')">
+                <div class="product-tier">기본</div>
+                <div class="product-name">전공 종합 진단</div>
+                <div class="product-price-tag">4,900원</div>
+                <div class="product-desc">전공 기준 9개 역량 갭 진단 + 탐구 설계 가이드</div>
+              </button>
+              <button type="button" class="product-btn" id="btn-sima" onclick="selectProduct('심화')">
+                <div class="product-tier">심화</div>
+                <div class="product-name">+ 대학 맞춤 분석</div>
+                <div class="product-price-tag">9,800원</div>
+                <div class="product-desc">기본 + 목표 대학 기조·권장과목·갭 재해석 (1개교)</div>
+              </button>
+              <button type="button" class="product-btn" id="btn-jonghap" onclick="selectProduct('종합')">
+                <div class="product-tier">종합</div>
+                <div class="product-name">+ 대학 비교팩</div>
+                <div class="product-price-tag">14,800원</div>
+                <div class="product-desc">기본 + 목표 대학 3곳 나란히 비교</div>
+              </button>
+            </div>
+            <input type="hidden" name="product_type" id="product_type_input" value="기본">
+          </div>
+
+          <!-- 대학 선택 (심화/종합 선택 시) -->
+          <div class="field form-full" id="univ-section" style="display:none">
+            <div class="univ-selector-wrap">
+              <div class="univ-label" id="univ-label-text">목표 대학을 선택해주세요</div>
+              <div class="univ-grid cols-1" id="univ-grid">
+                <!-- JS로 채워짐 -->
+              </div>
+            </div>
+          </div>
+
           <div class="field">
             <label>이메일 <span class="req">*</span></label>
             <input type="email" name="email" required placeholder="report@example.com">
@@ -1034,6 +1098,51 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
 });
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+
+// ── 상품 선택 & 대학 선택 ──────────────────
+const UNIVS = ["서울대학교","연세대학교","고려대학교","성균관대학교","한양대학교","서강대학교","이화여자대학교","한국외국어대학교","중앙대학교","경희대학교","홍익대학교","건국대학교","숙명여자대학교","동국대학교","단국대학교","인하대학교","아주대학교","가천대학교","국민대학교","세종대학교","KAIST","포항공과대학교(POSTECH)","UNIST","DGIST","부산대학교","경북대학교","전남대학교","전북대학교","충남대학교","충북대학교","강원대학교","제주대학교"];
+
+function buildUnivSelects(count) {
+  const grid = document.getElementById('univ-grid');
+  grid.className = 'univ-grid ' + (count === 1 ? 'cols-1' : 'cols-3');
+  grid.innerHTML = '';
+  for (let i = 1; i <= count; i++) {
+    const div = document.createElement('div');
+    div.className = 'univ-select-item';
+    const lbl = count === 1 ? '목표 대학' : '대학 ' + i;
+    let opts = '<option value="">선택하세요</option>';
+    UNIVS.forEach(u => { opts += '<option value="' + u + '">' + u + '</option>'; });
+    div.innerHTML = '<label for="univ_' + i + '">' + lbl + '</label><select name="univ_' + i + '" id="univ_' + i + '" required>' + opts + '</select>';
+    grid.appendChild(div);
+  }
+}
+
+function selectProduct(type) {
+  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('active'));
+  const idMap = {'기본':'btn-basic','심화':'btn-sima','종합':'btn-jonghap'};
+  const btn = document.getElementById(idMap[type]);
+  if (btn) btn.classList.add('active');
+  document.getElementById('product_type_input').value = type;
+
+  const sec = document.getElementById('univ-section');
+  const label = document.getElementById('univ-label-text');
+
+  // 기존 선택 required 해제
+  document.querySelectorAll('[name^="univ_"]').forEach(el => el.required = false);
+
+  if (type === '기본') {
+    sec.style.display = 'none';
+  } else if (type === '심화') {
+    sec.style.display = 'block';
+    label.textContent = '분석할 목표 대학 선택 (1개)';
+    buildUnivSelects(1);
+  } else {
+    sec.style.display = 'block';
+    label.textContent = '비교할 목표 대학 선택 (3개)';
+    buildUnivSelects(3);
+  }
+}
 
 // NEIS+ 토글
 function toggleNeis() {
