@@ -288,6 +288,16 @@
                  border-radius: 7px; text-decoration: none; transition: background .15s; }
     .neis-link:hover { background: #075985; }
 
+
+    /* JS 실패 시 data-animate 요소 폴백 — 500ms 후 무조건 보임 */
+    @keyframes fallbackShow {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    [data-animate]:not(.visible) {
+      animation: fallbackShow .6s ease .8s both;
+    }
+
     /* ── 신청 폼 ── */
     .form-bg { background: var(--bg); }
     .form-card { background: #fff; border: 1px solid var(--border); border-radius: 20px;
@@ -596,7 +606,7 @@
           <div class="page-title-bar">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div>
           <div class="page-mini-card r" style="margin-bottom:6px">
             <div class="page-mini-card-title">📊 한 줄 진단</div>
-            <div class="page-mini-card-body">구현 경험은 있으나 '왜·얼마나·다음엔' 이 세 가지가 빠진 학생부</div>
+            <div class="page-mini-card-body">구현 경험은 있으나 &apos;왜·얼마나·다음엔&apos; 이 세 가지가 빠진 학생부</div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:4px">
             <div class="page-mini-card b"><div class="page-mini-card-title">CARE-3</div><div class="page-mini-card-body">발전 중</div></div>
@@ -951,15 +961,15 @@
 ══════════════════════════════════ */
 const LB_CONTENT = {
   lb1: {
-    title: 'PAGE 1 · 진단 프로필',
-    html: '<div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px"><div style="font-size:0.7rem;color:#94a3b8;margin-bottom:6px">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div><div style="font-size:0.92rem;font-style:italic;color:#e2e8f0;border-left:3px solid #3b82f6;padding-left:10px;line-height:1.6">구현 경험은 있으나 \'왜·얼마나·다음엔\' 이 세 가지가 빠진 학생부</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-3</b> 진로 탐색<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-3</b> 탐구력<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-1</b> 교과 이수<br><span style="color:#d97706">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-2</b> 학업태도<br><span style="color:#d97706">발전 중</span></div></div>'
+    title: "PAGE 1 · 진단 프로필",
+    html: '<div style="background:#0f172a;color:#fff;padding:16px;border-radius:8px;margin-bottom:14px"><div style="font-size:0.7rem;color:#94a3b8;margin-bottom:6px">🔑 세트키 진단 리포트 · 컴퓨터공학 / 고2</div><div style="font-size:0.92rem;font-style:italic;color:#e2e8f0;border-left:3px solid #3b82f6;padding-left:10px;line-height:1.6">구현 경험은 있으나 &apos;왜·얼마나·다음엔&apos; 이 세 가지가 빠진 학생부</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-3</b> 진로 탐색<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-3</b> 탐구력<br><span style="color:#ef4444">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>CARE-1</b> 교과 이수<br><span style="color:#d97706">발전 중</span></div><div style="background:#fffbeb;border-left:3px solid #f59e0b;border-radius:6px;padding:12px;font-size:0.82rem"><b>ACAD-2</b> 학업태도<br><span style="color:#d97706">발전 중</span></div></div>'
   },
   lb2: {
-    title: 'PAGE 2 · 갭 진단',
+    title: "PAGE 2 · 갭 진단",
     html: '<div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 1 — 진로 탐색 연속성 (CARE-3)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">1학년 정보 수업에서 버블 정렬을 구현한 경험이 2학년 수학Ⅱ·확률과통계 어디에도 연결되지 않습니다. exemplary 사례는 전 학기 탐구 한계를 다음 탐구의 출발점으로 이어받습니다.</p><div style="border-left:3px solid #e2e8f0;padding-left:8px;font-size:0.76rem;color:#64748b;font-style:italic;margin-top:8px">"소프트웨어 개발자를 꿈으로 설정하고 직업 전망을 조사·발표하였다." → 1회성 조사에 그침</div></div><div style="border-left:4px solid #ef4444;background:#fef2f2;border-radius:8px;padding:14px;margin-bottom:10px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🔴 GAP 2 — 전공 교과 이수 (CARE-1)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">인공지능기초 미이수(학교 미개설, 공동교육과정 대안 탐색 없음). 물리학Ⅰ 미이수(이수 선택 안 함).</p></div><div style="border-left:4px solid #d97706;background:#fffbeb;border-radius:8px;padding:14px"><div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">🟡 GAP 3 — 탐구력 깊이 (ACAD-3)</div><p style="font-size:0.82rem;color:#334155;line-height:1.65">버블 정렬 구현은 있으나 가설 설정·조건별 측정·한계 인식·후속 탐구 예고가 없음. "수행평가 우수"에서 멈춤.</p></div>'
   },
   lb3: {
-    title: 'PAGE 3 · 탐구 설계 가이드',
+    title: "PAGE 3 · 탐구 설계 가이드",
     html: '<div style="font-weight:700;font-size:0.88rem;margin-bottom:10px">💡 ACTION 1 — CARE-3 갭 해소</div><div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px"><div style="font-size:0.75rem;font-weight:700;color:#0369a1;margin-bottom:8px">🔬 탐구 설계 가이드</div><div style="font-size:0.8rem;color:#0c4a6e;border-left:3px solid #38bdf8;padding-left:10px;margin-bottom:12px;line-height:1.6"><b>출발점:</b> 1학년 버블 정렬에서 "역순 입력에서 느리다"는 걸 발견했는데, 이게 왜 그런지 수식으로 이해해보고 싶다는 질문에서 시작합니다.</div><div style="display:grid;grid-template-columns:76px 1fr;gap:8px;background:#fff;border-radius:6px;padding:8px;border:1px solid #e0f2fe;margin-bottom:6px">
           <div style="font-size:0.72rem;font-weight:700;color:#0369a1">가설 설정</div>
           <div><div style="font-size:0.78rem;line-height:1.5;color:#1e293b">퀵 정렬 피벗이 성능에 영향 → 점화식으로 표현</div><div style="font-size:0.7rem;color:#64748b;margin-top:2px">→ ACAD-3: 교과 개념에서 자발적 의문 확장</div></div>
@@ -975,7 +985,7 @@ const LB_CONTENT = {
         </div></div>'
   },
   lb4: {
-    title: 'PAGE 4 · 성장 예측',
+    title: "PAGE 4 · 성장 예측",
     html: '<p style="font-size:0.82rem;color:#64748b;margin-bottom:14px">이 탐구를 완수했을 때 예상되는 역량 변화입니다.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">진로 탐색 연속성<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-3</span></div><div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px"><span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">1학년 탐구를 2학년 수학 과목과 연결하고 세특에 반영됐을 때</div><div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div></div><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">탐구력<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">ACAD-3</span></div><div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:600;margin-bottom:8px"><span style="background:#f1f5f9;color:#64748b;padding:2px 8px;border-radius:99px">발전 중</span>→<span style="background:#f0fdf4;color:#16a34a;padding:2px 8px;border-radius:99px">충분</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">가설→구현→측정→한계인식의 전 과정을 세특에 담았을 때</div><div style="font-size:0.72rem;color:#16a34a;margin-top:6px;font-weight:700">신뢰도 높음 ✓</div></div><div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;grid-column:1/-1"><div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">전공 교과 이수 ⚠<br><span style="font-size:0.7rem;color:#64748b;font-weight:400">CARE-1</span></div><div style="font-size:0.76rem;color:#64748b;line-height:1.55">이 탐구로는 해결 안 됨 — 인공지능기초 공동교육과정 별도 이수 필요</div><div style="font-size:0.72rem;color:#d97706;margin-top:6px;font-weight:700">⚠ 아직 남는 갭</div></div></div>'
   }
 };
